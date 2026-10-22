@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aster · 发现</title>
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.toggle('no-vt', !(("onpagereveal" in window) && location.protocol !== "file:"));</script>
+</head>
+<body data-page="discover">
+
+<script src="sprite.js"></script>
+
+<div class="app">
+
+  <!-- ===================== 顶栏 ===================== -->
+  <header class="titlebar">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="0 0 512 512"><use href="#app-icon"/></svg>
+      Aster
+    </a>
+    <div class="win-controls">
+        <button class="wc wc-green" data-wc="max" title="进入全屏" aria-label="进入全屏">
+          <svg class="ico-enter" viewBox="0 0 8 8"><path d="M1.5 1.5H4.4L1.5 4.4V1.5Z" fill="#0B2A16"/><path d="M6.5 6.5H3.6L6.5 3.6V6.5Z" fill="#0B2A16"/></svg>
+          <svg class="ico-exit" viewBox="0 0 8 8"><path d="M4.5 3.5V1.2L1.2 4.5H3.5V3.5H4.5ZM3.5 4.5V6.8L6.8 3.5H4.5V4.5H3.5Z" fill="#0B2A16"/></svg>
+        </button>
+        <button class="wc wc-yellow" data-wc="min" title="缩小" aria-label="缩小">
+          <svg viewBox="0 0 8 8"><path d="M2 4h4" stroke="#2A1D02" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+        </button>
+        <button class="wc wc-red" data-wc="close" title="关闭" aria-label="关闭">
+          <svg viewBox="0 0 8 8"><path d="M2.2 2.2l3.6 3.6M5.8 2.2L2.2 5.8" stroke="#310604" stroke-width="1.15" stroke-linecap="round" fill="none"/></svg>
+        </button>
+      </div>
+  </header>
+
+  <div class="body">
+
+    <!-- ===================== 侧边栏 ===================== -->
+    <aside class="sidebar">
+      <nav class="nav">
+        <a href="index.html" class="active">
+          <svg class="icon"><use href="#i-home"/></svg>发现
+        </a>
+        <a href="playlist.html">
+          <svg class="icon"><use href="#i-library"/></svg>音乐库
+        </a>
+        <a href="playlist.html">
+          <svg class="icon"><use href="#i-heart"/></svg>收藏
+        </a>
+        <a href="playlist.html">
+          <svg class="icon"><use href="#i-clock"/></svg>最近播放
+        </a>
+      </nav>
+
+      <div class="side-sep"></div>
+
+      <div class="side-label">
+        我的歌单
+        <button aria-label="新建歌单"><svg class="icon" style="width:14px;height:14px"><use href="#i-plus"/></svg></button>
+      </div>
+      <div class="playlists">
+        <a href="playlist.html">
+          <span class="pl-thumb" style="background:linear-gradient(135deg,#3A1A6B,#8B2D6B)"></span>深夜紫调
+        </a>
+        <a href="playlist.html" class="current">
+          <span class="pl-thumb" style="background:linear-gradient(135deg,#241046,#C33C71)"></span>山茶与雨
+        </a>
+        <a href="playlist.html">
+          <span class="pl-thumb" style="background:linear-gradient(135deg,#141033,#4B2A8F)"></span>只放给凌晨
+        </a>
+        <a href="playlist.html">
+          <span class="pl-thumb" style="background:linear-gradient(135deg,#2B0E2A,#E0617F)"></span>Lo-Fi 房间
+        </a>
+      </div>
+
+      <div class="side-bottom">
+        <a href="settings.html">
+          <svg class="icon"><use href="#i-settings"/></svg>设置
+        </a>
+      </div>
+    </aside>
+
+    <!-- ===================== 内容 ===================== -->
+    <main class="content">
+
+      <div class="content-head">
+        <div>
+          <p class="greeting">晚上好</p>
+          <h1 class="page-title">今晚想听点什么</h1>
+        </div>
+        <div class="head-actions">
+          <label class="search">
+            <svg class="icon"><use href="#i-search"/></svg>
+            <input type="text" placeholder="搜索歌曲、艺人、歌单" aria-label="搜索">
+            <kbd>⌘K</kbd>
+          </label>
+          <a class="avatar" href="login.html" title="账号"></a>
+        </div>
+      </div>
+
+      <!-- 精选 -->
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="hero-tag">本周精选 · WEEKLY PICK</p>
+          <h2>山茶夜语</h2>
+          <p>十首为深夜准备的紫色调，
+从一朵山茶落下的声音开始。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="now-playing.html">
+              <svg class="icon"><use href="#i-play"/></svg>播放歌单
+            </a>
+            <button class="btn btn-ghost" data-like>
+              <svg class="icon"><use href="#i-heart"/></svg>收藏
+            </button>
+          </div>
+        </div>
+        <div class="hero-art"><span class="art-ring"></span></div>
+      </section>
+
+      <!-- 最近播放 -->
+      <div class="section-head">
+        <h3>最近播放</h3>
+        <a href="playlist.html">全部</a>
+      </div>
+
+      <div class="cards">
+        <a class="card" href="playlist.html">
+          <div class="cover c1">
+            <span class="play-fab" data-play="山茶夜语" data-artist="Aster Studio"><svg class="icon"><use href="#i-play"/></svg></span>
+          </div>
+          <h4>山茶夜语</h4><span>Aster Studio</span>
+        </a>
+        <a class="card" href="playlist.html">
+          <div class="cover c2">
+            <span class="play-fab" data-play="紫夜电台" data-artist="24 首 · 精选合辑"><svg class="icon"><use href="#i-play"/></svg></span>
+          </div>
+          <h4>紫夜电台</h4><span>24 首 · 1 小时 42 分</span>
+        </a>
+        <a class="card" href="playlist.html">
+          <div class="cover c3">
+            <span class="play-fab" data-play="雨落窗台" data-artist="城市噪音"><svg class="icon"><use href="#i-play"/></svg></span>
+          </div>
+          <h4>雨落窗台</h4><span>12 首 · 48 分</span>
+        </a>
+        <a class="card" href="playlist.html">
+          <div class="cover c4">
+            <span class="play-fab" data-play="午夜钢琴" data-artist="慢速钢琴 · 无人声"><svg class="icon"><use href="#i-play"/></svg></span>
+          </div>
+          <h4>午夜钢琴</h4><span>慢速钢琴 · 无人声</span>
+        </a>
+        <a class="card" href="playlist.html">
+          <div class="cover c5">
+            <span class="play-fab" data-play="深紫回声" data-artist="夜间精选"><svg class="icon"><use href="#i-play"/></svg></span>
+          </div>
+          <h4>深紫回声</h4><span>夜间精选</span>
+        </a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ===================== 播放条 ===================== -->
+  <footer class="playerbar" id="playerbar">
+    <div class="pb-progress"><div class="fill"></div></div>
+    <div class="pb-left">
+      <a href="now-playing.html" class="pb-cover" title="打开正在播放"></a>
+      <div class="pb-meta">
+        <strong id="pb-title">山茶夜语</strong>
+        <span id="pb-artist">Aster Studio</span>
+      </div>
+      <button class="icon-btn liked" data-like aria-label="喜欢">
+        <svg class="icon"><use href="#i-heart"/></svg>
+      </button>
+    </div>
+    <div class="pb-center">
+      <button class="icon-btn" aria-label="随机播放"><svg class="icon"><use href="#i-shuffle"/></svg></button>
+      <button class="icon-btn" data-prev aria-label="上一首"><svg class="icon"><use href="#i-prev"/></svg></button>
+      <button class="play-btn" data-toggle aria-label="播放/暂停">
+        <svg class="icon icon-play"><use href="#i-play"/></svg>
+        <svg class="icon icon-pause"><use href="#i-pause"/></svg>
+      </button>
+      <button class="icon-btn" data-next aria-label="下一首"><svg class="icon"><use href="#i-next"/></svg></button>
+      <button class="icon-btn" aria-label="循环"><svg class="icon"><use href="#i-repeat"/></svg></button>
+    </div>
+    <div class="pb-right">
+      <div class="volume">
+        <svg class="icon"><use href="#i-volume"/></svg>
+        <div class="vol-track"><i></i></div>
+      </div>
+      <button class="icon-btn" aria-label="播放歌曲列表" data-queue title="播放队列"><svg class="icon"><use href="#i-queue"/></svg></button>
+    </div>
+  </footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

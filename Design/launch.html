@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aster</title>
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.toggle('no-vt', !(("onpagereveal" in window) && location.protocol !== "file:"));</script>
+</head>
+<body data-page="launch">
+
+<script src="sprite.js"></script>
+
+<div class="launch" id="launch">
+  <svg class="launch-icon" viewBox="0 0 512 512"><use href="#app-icon"/></svg>
+  <h1 class="launch-word">Aster</h1>
+  <p class="launch-tag">山茶 · 只属于你的音乐空间</p>
+  <div class="launch-bar"><i></i></div>
+  <div class="launch-ver">VERSION 1.0.0　·　CAMELLIA EDITION</div>
+</div>
+
+<script src="app.js"></script>
+<script>
+(function () {
+  var el = document.getElementById('launch');
+  var done = false;
+
+  function go() {
+    if (done) return;
+    done = true;
+    el.classList.add('out');
+    setTimeout(function () { location.href = 'login.html'; }, 420);
+  }
+
+  // 2.4 秒后自动进入登录；点击任意处可跳过
+  setTimeout(go, 2400);
+  el.addEventListener('click', go);
+})();
+</script>
+</body>
+</html>

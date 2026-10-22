@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>正在播放 · Aster</title>
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.toggle('no-vt', !(("onpagereveal" in window) && location.protocol !== "file:"));</script>
+</head>
+<body data-page="now">
+
+<script src="sprite.js"></script>
+
+<div class="np">
+
+  <header class="np-head">
+    <a class="back" href="index.html" aria-label="返回">
+      <svg class="icon"><use href="#i-back"/></svg>
+    </a>
+    <span class="crumb">正在播放</span>
+
+    <div class="win-controls">
+        <button class="wc wc-green" data-wc="max" title="进入全屏" aria-label="进入全屏">
+          <svg class="ico-enter" viewBox="0 0 8 8"><path d="M1.5 1.5H4.4L1.5 4.4V1.5Z" fill="#0B2A16"/><path d="M6.5 6.5H3.6L6.5 3.6V6.5Z" fill="#0B2A16"/></svg>
+          <svg class="ico-exit" viewBox="0 0 8 8"><path d="M4.5 3.5V1.2L1.2 4.5H3.5V3.5H4.5ZM3.5 4.5V6.8L6.8 3.5H4.5V4.5H3.5Z" fill="#0B2A16"/></svg>
+        </button>
+        <button class="wc wc-yellow" data-wc="min" title="缩小" aria-label="缩小">
+          <svg viewBox="0 0 8 8"><path d="M2 4h4" stroke="#2A1D02" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+        </button>
+        <button class="wc wc-red" data-wc="close" title="关闭" aria-label="关闭">
+          <svg viewBox="0 0 8 8"><path d="M2.2 2.2l3.6 3.6M5.8 2.2L2.2 5.8" stroke="#310604" stroke-width="1.15" stroke-linecap="round" fill="none"/></svg>
+        </button>
+      </div>
+  </header>
+
+  <div class="np-body">
+
+    <!-- 左：封面与控制 -->
+    <div class="np-left">
+      <div class="np-art"><span class="art-ring"></span></div>
+
+      <h1 class="np-title">山茶夜语</h1>
+      <p class="np-artist">Aster Studio · 深夜紫调</p>
+
+      <div class="np-progress">
+        <div class="range">
+          <div class="fill" style="width:43%"></div>
+          <div class="knob" style="left:43%"></div>
+        </div>
+        <div class="range-time">
+          <span id="np-cur">1:42</span>
+          <span id="np-total">4:38</span>
+        </div>
+      </div>
+
+      <div class="np-controls">
+        <button class="icon-btn" aria-label="随机播放"><svg class="icon"><use href="#i-shuffle"/></svg></button>
+        <button class="icon-btn" data-prev aria-label="上一首"><svg class="icon"><use href="#i-prev"/></svg></button>
+        <button class="play-btn" data-toggle aria-label="播放/暂停">
+          <svg class="icon icon-play"><use href="#i-play"/></svg>
+          <svg class="icon icon-pause"><use href="#i-pause"/></svg>
+        </button>
+        <button class="icon-btn" data-next aria-label="下一首"><svg class="icon"><use href="#i-next"/></svg></button>
+        <button class="icon-btn" aria-label="循环"><svg class="icon"><use href="#i-repeat"/></svg></button>
+        <span class="spacer"></span>
+        <button class="icon-btn liked" data-like aria-label="喜欢"><svg class="icon"><use href="#i-heart"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 右：歌词与队列 -->
+    <div class="np-right">
+      <p class="lyrics-label">歌词 · LYRICS</p>
+
+      <div class="lyrics">
+        <div class="lyric">夜色落在山茶的花瓣上</div>
+        <div class="lyric">我把心事调成了低频</div>
+        <div class="lyric">雨声比我先学会了停顿</div>
+        <div class="lyric active">让紫色的光替我呼吸</div>
+        <div class="lyric near">你的名字在副歌里循环</div>
+        <div class="lyric">我在等一句迟到的回答</div>
+        <div class="lyric">房间只剩下回声</div>
+      </div>
+
+      <div class="np-queue">
+        <div class="section-head">
+          <h3>接下来播放</h3>
+          <span>3 首</span>
+        </div>
+
+        <div class="q-row" data-play="紫色霓虹">
+          <div class="q-cover" style="background:linear-gradient(135deg,#241040,#5C214A)"></div>
+          <div class="q-meta"><strong>紫色霓虹</strong><span>深夜电台</span></div>
+          <span class="q-time">3:24</span>
+        </div>
+
+        <div class="q-row" data-play="雨落窗台">
+          <div class="q-cover" style="background:linear-gradient(135deg,#0D0821,#361E6B)"></div>
+          <div class="q-meta"><strong>雨落窗台</strong><span>城市噪音</span></div>
+          <span class="q-time">4:02</span>
+        </div>
+
+        <div class="q-row" data-play="只放给凌晨">
+          <div class="q-cover" style="background:linear-gradient(135deg,#1C081C,#75335C)"></div>
+          <div class="q-meta"><strong>只放给凌晨</strong><span>Nox</span></div>
+          <span class="q-time">3:47</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

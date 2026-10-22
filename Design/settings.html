@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>设置 · Aster</title>
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.toggle('no-vt', !(("onpagereveal" in window) && location.protocol !== "file:"));</script>
+</head>
+<body data-page="settings">
+
+<script src="sprite.js"></script>
+
+<div class="set-page">
+
+  <div class="set-top">
+    <header class="set-head">
+      <div class="set-head-left">
+        <a class="back" href="index.html" aria-label="返回">
+          <svg class="icon"><use href="#i-back"/></svg>
+        </a>
+        <h1>设置</h1>
+      </div>
+      <div class="win-controls">
+        <button class="wc wc-green" data-wc="max" title="进入全屏" aria-label="进入全屏">
+          <svg class="ico-enter" viewBox="0 0 8 8"><path d="M1.5 1.5H4.4L1.5 4.4V1.5Z" fill="#0B2A16"/><path d="M6.5 6.5H3.6L6.5 3.6V6.5Z" fill="#0B2A16"/></svg>
+          <svg class="ico-exit" viewBox="0 0 8 8"><path d="M4.5 3.5V1.2L1.2 4.5H3.5V3.5H4.5ZM3.5 4.5V6.8L6.8 3.5H4.5V4.5H3.5Z" fill="#0B2A16"/></svg>
+        </button>
+        <button class="wc wc-yellow" data-wc="min" title="最小化" aria-label="最小化">
+          <svg viewBox="0 0 8 8"><path d="M2 4h4" stroke="#2A1D02" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+        </button>
+        <button class="wc wc-red" data-wc="close" title="关闭" aria-label="关闭">
+          <svg viewBox="0 0 8 8"><path d="M2.2 2.2l3.6 3.6M5.8 2.2L2.2 5.8" stroke="#310604" stroke-width="1.15" stroke-linecap="round" fill="none"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="set-tabs">
+      <a href="#account" class="on">账号</a>
+      <a href="#general">常规</a>
+      <a href="#system">系统</a>
+      <a href="#play">播放</a>
+      <a href="#quality">音质与下载</a>
+      <a href="#lyrics">桌面与歌词</a>
+      <a href="#shortcuts">快捷键</a>
+      <a href="#about">关于 Aster</a>
+    </nav>
+  </div>
+
+  <div class="set-inner">
+
+    <!-- 账号 -->
+    <section class="set-section" id="account">
+      <h2>账号</h2>
+      <div class="set-col">
+        <div class="row">
+          <span class="acc-dot" style="background:rgba(79,207,142,.14);color:#5FD79B;box-shadow:inset 0 0 0 1px rgba(95,215,155,.3)">微</span>
+          <span class="acc-dot" style="background:rgba(255,255,255,.06);color:#E8E2F5;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)">苹</span>
+          <span class="acc-dot" style="background:rgba(147,51,234,.16);color:#C084FC;box-shadow:inset 0 0 0 1px rgba(192,132,252,.3)">@</span>
+          <a class="link" href="login.html">绑定账号 ></a>
+        </div>
+        <div class="row">
+          <button class="set-btn">修改个人信息</button>
+          <button class="set-btn">登录设备管理</button>
+        </div>
+        <strong class="group-title">快速登录</strong>
+        <label class="ck"><input type="checkbox"><i></i><span>开启快速登录</span></label>
+      </div>
+    </section>
+
+    <!-- 常规 -->
+    <section class="set-section" id="general">
+      <h2>常规</h2>
+      <div class="set-col">
+        <div class="row">
+          <strong class="group-title" style="margin:0">字体选择</strong>
+          <span class="note">（如果字体显示不清断，请在控制面板 → 字体设置中启动系统 Clear Type 设置）</span>
+        </div>
+        <div class="row">
+          <select class="set-select"><option>字体</option><option>思源黑体</option><option>系统默认</option></select>
+        </div>
+
+        <div class="row wrap">
+          <label class="ck"><input type="checkbox"><i></i><span>开机自动运行</span></label>
+          <label class="ck"><input type="checkbox"><i></i><span>最小化显示</span></label>
+          <label class="ck"><input type="checkbox"><i></i><span>前台显示</span></label>
+        </div>
+
+        <label class="ck"><input type="checkbox"><i></i><span>将 Aster 设为默认播放器</span></label>
+        <label class="ck"><input type="checkbox" checked><i></i><span>开启 GPU 加速（若出现黑屏，请关闭 GPU 加速尝试解决）</span></label>
+        <label class="ck"><input type="checkbox"><i></i><span>禁用动画效果（减少部分资源占用）</span></label>
+        <label class="ck"><input type="checkbox"><i></i><span>禁用系统缩放比例（减少部分资源占用）</span></label>
+        <p class="note">*高分辨率适配，需开启后生效，建议重启软件</p>
+      </div>
+    </section>
+
+    <!-- 系统 -->
+    <section class="set-section" id="system">
+      <h2>系统</h2>
+      <div class="set-col">
+        <label class="ck"><input type="checkbox"><i></i><span>开启时关闭软件</span></label>
+
+        <div class="row">
+          <strong class="group-title" style="margin:0">剩余关闭时间</strong>
+          <select class="set-select" disabled><option>0</option></select>
+          <span class="unit">小时</span>
+          <select class="set-select" disabled><option>0</option></select>
+          <span class="unit">分钟</span>
+        </div>
+        <p class="note" style="margin-left:0">关闭软件时自动退出（当前版本固定为此行为）</p>
+
+        <div class="row">
+          <strong class="group-title" style="margin:0;width:64px">关闭主面板</strong>
+          <label class="rd"><input type="radio" name="closePanel" checked><i></i><span>最小化到系统托盘</span></label>
+          <label class="rd"><input type="radio" name="closePanel"><i></i><span>退出 Aster</span></label>
+        </div>
+
+        <label class="ck"><input type="checkbox"><i></i><span>开启 SMTC（开启后播放信息同步到系统菜单栏及第三方软件）</span></label>
+      </div>
+    </section>
+
+    <!-- 播放 -->
+    <section class="set-section" id="play">
+      <h2>播放</h2>
+      <div class="set-col">
+        <label class="ck"><input type="checkbox"><i></i><span>程序启动时自动播放</span></label>
+        <label class="ck"><input type="checkbox"><i></i><span>音乐播放时不自动休眠或锁屏</span></label>
+        <label class="ck"><input type="checkbox" checked><i></i><span>跨设备续播（登录后自动接着上一台设备的进度）</span></label>
+        <label class="ck"><input type="checkbox"><i></i><span>首次进入歌单页时自动播放（不播歌时）</span></label>
+        <label class="ck"><input type="checkbox" checked><i></i><span>程序启动时记住上一次播放进度</span></label>
+      </div>
+    </section>
+
+    <!-- 音质与下载 -->
+    <section class="set-section" id="quality">
+      <h2>音质与下载</h2>
+      <div class="set-col">
+        <div class="row">
+          <strong class="group-title" style="margin:0;width:64px">音质选择</strong>
+          <label class="rd"><input type="radio" name="q" ><i></i><span>标准</span></label>
+          <label class="rd"><input type="radio" name="q"><i></i><span>较高</span></label>
+          <label class="rd"><input type="radio" name="q" checked><i></i><span>无损</span></label>
+        </div>
+        <div class="row">
+          <strong class="group-title" style="margin:0;width:64px">下载目录</strong>
+          <span class="path">D:\Music\Aster</span>
+          <button class="set-btn">选择</button>
+        </div>
+        <div class="row">
+          <strong class="group-title" style="margin:0;width:64px">同时下载</strong>
+          <select class="set-select"><option>3</option><option>5</option><option>不限</option></select>
+          <span class="unit">首</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 桌面与歌词 -->
+    <section class="set-section" id="lyrics">
+      <h2>桌面与歌词</h2>
+      <div class="set-col">
+        <label class="ck"><input type="checkbox" checked><i></i><span>开启桌面歌词</span></label>
+        <div class="row">
+          <strong class="group-title" style="margin:0;width:64px">歌词字号</strong>
+          <select class="set-select"><option>中</option><option>小</option><option>大</option></select>
+        </div>
+        <div class="row">
+          <strong class="group-title" style="margin:0;width:64px">歌词颜色</strong>
+          <span class="swatch on" style="background:#FFFFFF"></span>
+          <span class="swatch" style="background:#C084FC"></span>
+          <span class="swatch" style="background:#FF4D6D"></span>
+          <span class="swatch" style="background:#A8A8C2"></span>
+        </div>
+        <label class="ck"><input type="checkbox"><i></i><span>锁定歌词位置</span></label>
+      </div>
+    </section>
+
+    <!-- 快捷键 -->
+    <section class="set-section" id="shortcuts">
+      <h2>快捷键</h2>
+      <div class="set-col">
+        <div class="keys">
+          <div class="k"><span>播放 / 暂停</span><kbd>Space</kbd></div>
+          <div class="k"><span>上一首 / 下一首</span><kbd>Ctrl</kbd><kbd>←</kbd><kbd>→</kbd></div>
+          <div class="k"><span>音量增减</span><kbd>Ctrl</kbd><kbd>↑</kbd><kbd>↓</kbd></div>
+          <div class="k"><span>搜索</span><kbd>Ctrl</kbd><kbd>K</kbd></div>
+          <div class="k"><span>喜欢当前歌曲</span><kbd>Ctrl</kbd><kbd>L</kbd></div>
+        </div>
+        <p class="note">快捷键暂不支持自定义，后续版本开放。</p>
+      </div>
+    </section>
+
+    <!-- 关于 -->
+    <section class="set-section" id="about">
+      <h2>关于 Aster</h2>
+      <div class="set-col">
+        <div class="row">
+          <svg class="about-icon" viewBox="0 0 512 512"><use href="#app-icon"/></svg>
+          <div>
+            <div class="about-name">Aster <span class="ver">1.0.0</span></div>
+            <div class="note" style="margin-top:4px">山茶 · 只属于你的音乐空间</div>
+          </div>
+          <button class="set-btn" style="margin-left:18px">检查更新</button>
+          <a class="link" href="brand.html" style="margin-left:10px">设计规范 →</a>
+        </div>
+        <p class="note">© 2026 Aster Studio　·　UI 设计稿 v1.0　·　保留所有权利</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
