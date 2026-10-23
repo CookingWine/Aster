@@ -1,0 +1,102 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ============================================================
+         按钮基座：AsterButton = 无默认装饰的按钮，所有外观由类样式叠加
+         ============================================================ -->
+    <ControlTheme x:Key="AsterButtonTheme" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="bg"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <!-- ============================================================
+         复选
+         ============================================================ -->
+    <ControlTheme x:Key="{x:Type CheckBox}" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{StaticResource NavTextHover}" />
+        <Setter Property="FontSize" Value="12.5" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ColumnDefinitions="Auto,*" Background="Transparent">
+                    <Border Name="box" Width="15" Height="15" CornerRadius="4"
+                            Background="#05FFFFFF" BorderBrush="#3A2F55" BorderThickness="1"
+                            VerticalAlignment="Center">
+                        <Path Name="mark" Data="M2,6 L5.2,9.2 L10.5,3.4"
+                              Stretch="Uniform" Width="9" Height="9"
+                              Stroke="#FFFFFF" StrokeThickness="1.8" StrokeLineCap="Round"
+                              IsVisible="False" />
+                    </Border>
+                    <ContentPresenter Grid.Column="1" Name="PART_ContentPresenter" Margin="9,0,0,0"
+                                      VerticalAlignment="Center"
+                                      Content="{TemplateBinding Content}"
+                                      Foreground="{TemplateBinding Foreground}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:checked /template/ Border#box">
+            <Setter Property="Background" Value="{StaticResource Purple}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Purple}" />
+        </Style>
+        <Style Selector="^:checked /template/ Path#mark">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#box">
+            <Setter Property="BorderBrush" Value="#4E3C7A" />
+        </Style>
+    </ControlTheme>
+
+    <!-- ============================================================
+         单选
+         ============================================================ -->
+    <ControlTheme x:Key="{x:Type RadioButton}" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{StaticResource NavTextHover}" />
+        <Setter Property="FontSize" Value="12.5" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ColumnDefinitions="Auto,*" Background="Transparent">
+                    <Border Name="ring" Width="14" Height="14" CornerRadius="7"
+                            Background="#05FFFFFF" BorderBrush="#3A2F55" BorderThickness="1"
+                            VerticalAlignment="Center">
+                        <Ellipse Name="dot" Width="6" Height="6" Fill="{StaticResource Purple}" IsVisible="False" />
+                    </Border>
+                    <ContentPresenter Grid.Column="1" Name="PART_ContentPresenter" Margin="9,0,0,0"
+                                      VerticalAlignment="Center"
+                                      Content="{TemplateBinding Content}"
+                                      Foreground="{TemplateBinding Foreground}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:checked /template/ Border#ring">
+            <Setter Property="BorderBrush" Value="{StaticResource Purple}" />
+        </Style>
+        <Style Selector="^:checked /template/ Ellipse#dot">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+    </ControlTheme>
+
+    <!--
+        输入框沿用 Fluent 默认模板（保证输入、选区、密码模式等行为完整），
+        外观在 Styles.axaml 与各窗体里直接设置属性覆盖。
+    -->
+
+</ResourceDictionary>

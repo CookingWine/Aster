@@ -1,0 +1,124 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="using:Aster.Controls"
+        x:Class="Aster.Views.LoginWindow"
+        Width="1080" Height="680"
+        MinWidth="900" MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource Bg}"
+        WindowDecorations="BorderOnly">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="TextControlPlaceholderForeground" Color="#4A4160" />
+    </Window.Resources>
+
+    <Window.Styles>
+        <Style Selector="TextBox.field">
+            <Setter Property="Height" Value="44" />
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="Padding" Value="14,0" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Background" Value="#120B22" />
+            <Setter Property="BorderBrush" Value="#241A3E" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TextBox.field:pointerover">
+            <Setter Property="BorderBrush" Value="#2E2350" />
+        </Style>
+        <Style Selector="TextBox.field:focus">
+            <Setter Property="BorderBrush" Value="#9933EA" />
+            <Setter Property="Background" Value="#150D28" />
+        </Style>
+    </Window.Styles>
+
+    <Grid ClipToBounds="True">
+        <!-- 左上紫色光晕 -->
+        <Border Width="1100" Height="1100" Background="{StaticResource AuraPurple}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-260,-360,0,0"
+                Opacity="0.8" IsHitTestVisible="False" />
+
+        <Grid ColumnDefinitions="1.12*,0.88*">
+
+            <!-- ============ 左：品牌 ============ -->
+            <Grid Name="Stage" Grid.Column="0" Margin="56,48">
+                <StackPanel VerticalAlignment="Center">
+                    <c:BrandMark Width="120" Height="120" HorizontalAlignment="Left" />
+                    <TextBlock Text="Aster" FontSize="58" FontWeight="Bold" LetterSpacing="-2.6"
+                               Margin="0,32,0,0" />
+                    <TextBlock Text="山茶 · 只属于你的音乐空间" FontSize="14"
+                               Foreground="{StaticResource Text2}" Margin="0,14,0,0" />
+                    <TextBlock MaxWidth="380" HorizontalAlignment="Left" TextAlignment="Left" Margin="0,10,0,0" TextWrapping="Wrap"
+                               FontSize="12" LineHeight="21.6" Foreground="{StaticResource Text4}"
+                               Text="登录后同步你的歌单、播放进度与桌面歌词设置。所有播放记录只属于你，不上传、不推荐、不打扰。" />
+                </StackPanel>
+
+                <TextBlock Text="VERSION 1.0.0　·　CAMELLIA EDITION" FontSize="10.5"
+                           Foreground="{StaticResource TextFaint}" LetterSpacing="1.7"
+                           VerticalAlignment="Bottom" />
+            </Grid>
+
+            <!-- ============ 右：表单 ============ -->
+            <Border Grid.Column="1" Background="#070310"
+                    BorderBrush="{StaticResource StrokeSoft}" BorderThickness="1,0,0,0">
+                <StackPanel Width="336" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                    <TextBlock Text="欢迎回来" FontSize="24" FontWeight="Bold" LetterSpacing="-0.5" />
+                    <TextBlock Text="登录以继续你的深夜播放列表" FontSize="12"
+                               Foreground="{StaticResource Text3}" Margin="0,8,0,0" />
+
+                    <!-- 页签 -->
+                    <Grid Margin="0,26,0,20">
+                        <Border Height="1" Background="#0FFFFFFF" VerticalAlignment="Bottom" />
+                        <StackPanel Orientation="Horizontal" Spacing="20">
+                            <c:AsterButton Name="PhoneTab" Classes="tab active" Content="手机号" Click="OnPhoneTab" />
+                            <c:AsterButton Name="MailTab" Classes="tab" Content="邮箱" Click="OnMailTab" />
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- 账号 -->
+                    <TextBlock Name="AccountLabel" Text="手机号" FontSize="11"
+                               Foreground="{StaticResource Text3}" Margin="0,0,0,7" />
+                    <TextBox Name="AccountBox" Classes="field" PlaceholderText="请输入手机号" />
+                    <TextBlock Text="密码" FontSize="11" Foreground="{StaticResource Text3}"
+                               Margin="0,14,0,7" />
+                    <TextBox Classes="field" PlaceholderText="请输入密码" PasswordChar="●" />
+
+                    <!-- 记住我 -->
+                    <Grid Margin="0,16,0,20">
+                        <CheckBox Content="记住我" FontSize="11.5" IsChecked="True" />
+                        <TextBlock Text="忘记密码？" FontSize="11.5" Foreground="#8B80A8"
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" />
+                    </Grid>
+
+                    <c:AsterButton Name="LoginButton" Height="46" CornerRadius="23" FontSize="14"
+                                   Classes="primary" Content="登录" Click="OnLogin" />
+
+                    <!-- 分割线 -->
+                    <Grid Margin="0,24,0,18" ColumnDefinitions="*,Auto,*" ColumnSpacing="12">
+                        <Border Height="1" Background="#12FFFFFF" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Text="其他方式" FontSize="11"
+                                   Foreground="{StaticResource TextDim}" />
+                        <Border Grid.Column="2" Height="1" Background="#12FFFFFF" VerticalAlignment="Center" />
+                    </Grid>
+
+                    <StackPanel Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center">
+                        <c:AsterButton Classes="oauth" Content="微信" Click="OnLogin" />
+                        <c:AsterButton Classes="oauth" Content="苹果" Click="OnLogin" />
+                        <c:AsterButton Classes="oauth" Content="QQ" Click="OnLogin" />
+                    </StackPanel>
+
+                    <TextBlock TextAlignment="Center" FontSize="11.5" Foreground="{StaticResource Text4}"
+                               Margin="0,28,0,0">
+                        <Run Text="还没有账号？" />
+                        <Run Text="立即注册" Foreground="{StaticResource PurpleLight}" />
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- 窗口控制 -->
+        <c:TrafficLights HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,22,24,0" />
+    </Grid>
+</Window>

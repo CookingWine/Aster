@@ -1,0 +1,152 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ============ 底色 ============ -->
+    <Color x:Key="BgColor">#050010</Color>
+    <Color x:Key="PanelColor">#080311</Color>
+    <Color x:Key="CardColor">#0A0517</Color>
+    <Color x:Key="Card2Color">#0E0820</Color>
+    <Color x:Key="Card3Color">#150D28</Color>
+
+    <SolidColorBrush x:Key="Bg" Color="#050010" />
+    <SolidColorBrush x:Key="Panel" Color="#080311" />
+    <SolidColorBrush x:Key="Card" Color="#0A0517" />
+    <SolidColorBrush x:Key="Card2" Color="#0E0820" />
+    <SolidColorBrush x:Key="Card3" Color="#150D28" />
+    <SolidColorBrush x:Key="Inset" Color="#120B22" />
+    <SolidColorBrush x:Key="InsetFocus" Color="#150D28" />
+
+    <!-- ============ 描边 ============ -->
+    <SolidColorBrush x:Key="Stroke" Color="#221A38" />
+    <SolidColorBrush x:Key="StrokeSoft" Color="#171029" />
+    <SolidColorBrush x:Key="StrokeStrong" Color="#2A1F44" />
+    <SolidColorBrush x:Key="FieldStroke" Color="#241A3E" />
+    <SolidColorBrush x:Key="Divider" Color="#0FFFFFFF" />
+
+    <!-- ============ 品牌色 ============ -->
+    <Color x:Key="PurpleColor">#9333EA</Color>
+    <SolidColorBrush x:Key="Purple" Color="#9333EA" />
+    <SolidColorBrush x:Key="PurpleHover" Color="#9F46F0" />
+    <SolidColorBrush x:Key="PurpleLight" Color="#C084FC" />
+    <SolidColorBrush x:Key="PurpleGlow" Color="#A855F7" />
+    <SolidColorBrush x:Key="Rose" Color="#FF4D6D" />
+    <SolidColorBrush x:Key="RoseSoft" Color="#FF6B8A" />
+    <SolidColorBrush x:Key="Gold" Color="#FFC46B" />
+
+    <!-- ============ 文字 ============ -->
+    <SolidColorBrush x:Key="Text" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="Text2" Color="#A8A8C2" />
+    <SolidColorBrush x:Key="Text3" Color="#6C6484" />
+    <SolidColorBrush x:Key="Text4" Color="#5E5478" />
+    <SolidColorBrush x:Key="TextDim" Color="#4A4160" />
+    <SolidColorBrush x:Key="TextFaint" Color="#3F3656" />
+    <SolidColorBrush x:Key="NavText" Color="#9A90B4" />
+    <SolidColorBrush x:Key="NavIcon" Color="#7A7099" />
+    <SolidColorBrush x:Key="NavTextHover" Color="#C9BCE4" />
+    <SolidColorBrush x:Key="NavActiveBg" Color="#191030" />
+    <SolidColorBrush x:Key="HoverWash" Color="#0AFFFFFF" />
+    <SolidColorBrush x:Key="HoverWash2" Color="#12FFFFFF" />
+
+    <!-- ============ 渐变：品牌图标 ============ -->
+    <LinearGradientBrush x:Key="BrandBg" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="#20103D" Offset="0" />
+        <GradientStop Color="#0B0519" Offset="0.5" />
+        <GradientStop Color="#04000C" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="PetalOuter" StartPoint="15%,0%" EndPoint="80%,100%">
+        <GradientStop Color="#F2759A" Offset="0" />
+        <GradientStop Color="#C33C71" Offset="0.45" />
+        <GradientStop Color="#5E0E36" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="PetalInner" StartPoint="15%,0%" EndPoint="80%,100%">
+        <GradientStop Color="#FFD3DE" Offset="0" />
+        <GradientStop Color="#EE7099" Offset="0.45" />
+        <GradientStop Color="#9B2A5C" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- ============ 渐变：精选横幅 ============ -->
+    <LinearGradientBrush x:Key="HeroBg" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="#380957" Offset="0" />
+        <GradientStop Color="#1C082E" Offset="0.52" />
+        <GradientStop Color="#5C1749" Offset="1" />
+    </LinearGradientBrush>
+    <RadialGradientBrush x:Key="HeroGlow" Center="92%,118%" GradientOrigin="92%,118%" RadiusX="62%" RadiusY="62%">
+        <GradientStop Color="#38FF4D6D" Offset="0" />
+        <GradientStop Color="#00FF4D6D" Offset="1" />
+    </RadialGradientBrush>
+
+    <LinearGradientBrush x:Key="HeroArtBg" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="#380957" Offset="0" />
+        <GradientStop Color="#1C082E" Offset="0.48" />
+        <GradientStop Color="#6E1B50" Offset="1" />
+    </LinearGradientBrush>
+    <RadialGradientBrush x:Key="HeroArtGlow" Center="44%,42%" GradientOrigin="44%,42%" RadiusX="62%" RadiusY="62%">
+        <GradientStop Color="#66FF96AF" Offset="0" />
+        <GradientStop Color="#1FFF5A82" Offset="0.44" />
+        <GradientStop Color="#00FF5A82" Offset="0.68" />
+    </RadialGradientBrush>
+
+    <LinearGradientBrush x:Key="NpArtBg" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="#3D0F57" Offset="0" />
+        <GradientStop Color="#1E0833" Offset="0.46" />
+        <GradientStop Color="#7A1F52" Offset="1" />
+    </LinearGradientBrush>
+    <RadialGradientBrush x:Key="NpArtGlow" Center="42%,40%" GradientOrigin="42%,40%" RadiusX="66%" RadiusY="66%">
+        <GradientStop Color="#8CFF96AF" Offset="0" />
+        <GradientStop Color="#24FF5A82" Offset="0.45" />
+        <GradientStop Color="#00FF5A82" Offset="0.7" />
+    </RadialGradientBrush>
+
+    <LinearGradientBrush x:Key="PkCoverBg" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="#1E0C38" Offset="0" />
+        <GradientStop Color="#4D1949" Offset="0.55" />
+        <GradientStop Color="#6B2347" Offset="1" />
+    </LinearGradientBrush>
+    <RadialGradientBrush x:Key="PkCoverGlow" Center="40%,42%" GradientOrigin="40%,42%" RadiusX="62%" RadiusY="62%">
+        <GradientStop Color="#73FFA0B4" Offset="0" />
+        <GradientStop Color="#00FFA0B4" Offset="0.68" />
+    </RadialGradientBrush>
+
+    <LinearGradientBrush x:Key="BarCoverBg" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="#3A0F3F" Offset="0" />
+        <GradientStop Color="#6B1A46" Offset="1" />
+    </LinearGradientBrush>
+    <RadialGradientBrush x:Key="BarCoverGlow" Center="45%,42%" GradientOrigin="45%,42%" RadiusX="60%" RadiusY="60%">
+        <GradientStop Color="#73FF96AF" Offset="0" />
+        <GradientStop Color="#00FF96AF" Offset="0.62" />
+    </RadialGradientBrush>
+
+    <LinearGradientBrush x:Key="Avatar" StartPoint="0%,0%" EndPoint="100%,100%">
+        <GradientStop Color="#9333EA" Offset="0" />
+        <GradientStop Color="#FF4D6D" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- ============ 渐变：进度条 ============ -->
+    <LinearGradientBrush x:Key="Progress" StartPoint="0%,0%" EndPoint="100%,0%">
+        <GradientStop Color="#9333EA" Offset="0" />
+        <GradientStop Color="#C084FC" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ProgressRose" StartPoint="0%,0%" EndPoint="100%,0%">
+        <GradientStop Color="#9333EA" Offset="0" />
+        <GradientStop Color="#FF9AAB" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- ============ 光晕 ============ -->
+    <RadialGradientBrush x:Key="AuraPurple" Center="50%,50%" GradientOrigin="50%,50%" RadiusX="50%" RadiusY="50%">
+        <GradientStop Color="#389333EA" Offset="0" />
+        <GradientStop Color="#0F7828C8" Offset="0.42" />
+        <GradientStop Color="#009333EA" Offset="0.68" />
+    </RadialGradientBrush>
+    <RadialGradientBrush x:Key="AuraRose" Center="50%,50%" GradientOrigin="50%,50%" RadiusX="50%" RadiusY="50%">
+        <GradientStop Color="#33FF4D6D" Offset="0" />
+        <GradientStop Color="#0A963264" Offset="0.5" />
+        <GradientStop Color="#00FF4D6D" Offset="0.7" />
+    </RadialGradientBrush>
+
+    <!-- ============ 尺寸 ============ -->
+    <CornerRadius x:Key="RXl">22</CornerRadius>
+    <CornerRadius x:Key="RLg">20</CornerRadius>
+    <CornerRadius x:Key="RMd">16</CornerRadius>
+    <CornerRadius x:Key="RSm">10</CornerRadius>
+
+</ResourceDictionary>

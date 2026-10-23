@@ -1,0 +1,365 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="using:Aster.Controls"
+        x:Class="Aster.Views.SettingsWindow"
+        Title="设置 · Aster"
+        Width="1060" Height="800"
+        MinWidth="900" MinHeight="640"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource Bg}"
+        WindowDecorations="BorderOnly">
+
+    <Window.Styles>
+        <Style Selector="StackPanel.col">
+            <Setter Property="Spacing" Value="13" />
+        </Style>
+        <Style Selector="StackPanel.row">
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="Spacing" Value="12" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TextBlock.grouptitle">
+            <Setter Property="FontSize" Value="12.5" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="#E8E2F5" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TextBlock.note">
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Foreground" Value="{StaticResource Text4}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <Style Selector="TextBlock.unit">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="#8B80A8" />
+        </Style>
+        <Style Selector="Border.select">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Padding" Value="10,0" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="BorderBrush" Value="#3A2F55" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="#150D28" />
+        </Style>
+        <Style Selector="Border.kbd">
+            <Setter Property="BorderBrush" Value="#3A2F55" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Padding" Value="6,2" />
+            <Setter Property="Background" Value="#05FFFFFF" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,*" ClipToBounds="True">
+        <Border Width="900" Height="900" Background="{StaticResource AuraPurple}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-220,-320,0,0"
+                Opacity="0.6" IsHitTestVisible="False" Grid.RowSpan="2" />
+
+        <!-- ==================== 顶部：标题 + 页签 ==================== -->
+        <StackPanel Grid.Row="0" Margin="52,22,52,0">
+            <Grid Name="Header" ColumnDefinitions="Auto,Auto,*,Auto">
+                <c:AsterButton Classes="icon" Width="28" Height="28" CornerRadius="14"
+                               Margin="-6,0,0,0" Click="OnBack" ToolTip.Tip="返回">
+                    <c:Icon Kind="Back" Width="18" Height="18" Tint="{StaticResource NavTextHover}" />
+                </c:AsterButton>
+                <TextBlock Grid.Column="1" Text="设置" FontSize="24" FontWeight="Bold"
+                           LetterSpacing="-0.5" Margin="12,0,0,0" VerticalAlignment="Center" />
+                <c:TrafficLights Grid.Column="3" VerticalAlignment="Center" />
+            </Grid>
+
+            <StackPanel Name="Tabs" Orientation="Horizontal" Spacing="26" Margin="0,16,0,0">
+                <c:AsterButton Classes="tab active" Content="账号" Tag="secAccount" Click="OnTab" />
+                <c:AsterButton Classes="tab" Content="常规" Tag="secGeneral" Click="OnTab" />
+                <c:AsterButton Classes="tab" Content="系统" Tag="secSystem" Click="OnTab" />
+                <c:AsterButton Classes="tab" Content="播放" Tag="secPlay" Click="OnTab" />
+                <c:AsterButton Classes="tab" Content="音质与下载" Tag="secQuality" Click="OnTab" />
+                <c:AsterButton Classes="tab" Content="桌面与歌词" Tag="secLyrics" Click="OnTab" />
+                <c:AsterButton Classes="tab" Content="快捷键" Tag="secShortcuts" Click="OnTab" />
+                <c:AsterButton Classes="tab" Content="关于 Aster" Tag="secAbout" Click="OnTab" />
+            </StackPanel>
+            <Border Height="1" Background="#0FFFFFFF" />
+        </StackPanel>
+
+        <!-- ==================== 内容 ==================== -->
+        <ScrollViewer Grid.Row="1" Name="Scroller" HorizontalScrollBarVisibility="Disabled"
+                      HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top">
+            <StackPanel Name="Body" Margin="52,8,52,90" MaxWidth="1080" HorizontalAlignment="Stretch">
+
+                <!-- 账号 -->
+                <Grid Name="secAccount" ColumnDefinitions="104,*" Margin="0,26,0,0">
+                    <TextBlock Text="账号" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Top"
+                               Margin="0,3,0,0" />
+                    <StackPanel Grid.Column="1" Classes="col">
+                        <StackPanel Classes="row">
+                            <Border Width="26" Height="26" CornerRadius="13" Background="#244FCF8E"
+                                    BorderBrush="#4D5FD79B" BorderThickness="1">
+                                <TextBlock Text="微" FontSize="11" FontWeight="SemiBold" Foreground="#5FD79B"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <Border Width="26" Height="26" CornerRadius="13" Background="#0FFFFFFF"
+                                    BorderBrush="#24FFFFFF" BorderThickness="1">
+                                <TextBlock Text="苹" FontSize="11" FontWeight="SemiBold" Foreground="#E8E2F5"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <Border Width="26" Height="26" CornerRadius="13" Background="#299333EA"
+                                    BorderBrush="#4DC084FC" BorderThickness="1">
+                                <TextBlock Text="@" FontSize="11" FontWeight="SemiBold" Foreground="#C084FC"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <TextBlock Text="绑定账号 &gt;" FontSize="12" Foreground="{StaticResource Text4}"
+                                       VerticalAlignment="Center" Margin="8,0,0,0" Cursor="Hand" />
+                        </StackPanel>
+                        <StackPanel Classes="row">
+                            <c:AsterButton Classes="setbtn" Content="修改个人信息" />
+                            <c:AsterButton Classes="setbtn" Content="登录设备管理" />
+                        </StackPanel>
+                        <TextBlock Classes="grouptitle" Text="快速登录" Margin="0,4,0,0" />
+                        <CheckBox Content="开启快速登录" />
+                    </StackPanel>
+                    <Border Grid.ColumnSpan="2" Height="1" Background="#0DFFFFFF" VerticalAlignment="Bottom"
+                            Margin="0,26,0,0" />
+                </Grid>
+
+                <!-- 常规 -->
+                <Grid Name="secGeneral" ColumnDefinitions="104,*" Margin="0,26,0,0">
+                    <TextBlock Text="常规" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Top"
+                               Margin="0,3,0,0" />
+                    <StackPanel Grid.Column="1" Classes="col">
+                        <StackPanel Classes="row">
+                            <TextBlock Classes="grouptitle" Text="字体选择" />
+                            <TextBlock Classes="note" MaxWidth="520" VerticalAlignment="Center"
+                                       Text="（如果字体显示不清晰，请在控制面板 → 字体设置中启动系统 Clear Type 设置）" />
+                        </StackPanel>
+                        <StackPanel Classes="row">
+                            <Border Classes="select" Width="150">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Text="字体" FontSize="12" Foreground="#E8E2F5"
+                                               VerticalAlignment="Center" />
+                                    <Path Grid.Column="1" Data="M6,9 L12,15 L18,9" Stroke="#8B80A8"
+                                          StrokeThickness="2" StrokeLineCap="Round" Stretch="Uniform"
+                                          Width="9" Height="9" VerticalAlignment="Center" />
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+
+                        <WrapPanel Orientation="Horizontal" ItemSpacing="22" LineSpacing="10">
+                            <CheckBox Content="开机自动运行" />
+                            <CheckBox Content="最小化显示" />
+                            <CheckBox Content="前台显示" />
+                        </WrapPanel>
+
+                        <CheckBox Content="将 Aster 设为默认播放器" />
+                        <CheckBox Content="开启 GPU 加速（若出现黑屏，请关闭 GPU 加速尝试解决）"
+                                  IsChecked="True" />
+                        <CheckBox Content="禁用动画效果（减少部分资源占用）" />
+                        <CheckBox Content="禁用系统缩放比例（减少部分资源占用）" />
+                        <TextBlock Classes="note" Text="*高分辨率适配，需开启后生效，建议重启软件" />
+                    </StackPanel>
+                    <Border Grid.ColumnSpan="2" Height="1" Background="#0DFFFFFF" VerticalAlignment="Bottom"
+                            Margin="0,26,0,0" />
+                </Grid>
+
+                <!-- 系统 -->
+                <Grid Name="secSystem" ColumnDefinitions="104,*" Margin="0,26,0,0">
+                    <TextBlock Text="系统" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Top"
+                               Margin="0,3,0,0" />
+                    <StackPanel Grid.Column="1" Classes="col">
+                        <CheckBox Content="开启时关闭软件" />
+
+                        <StackPanel Classes="row">
+                            <TextBlock Classes="grouptitle" Text="剩余关闭时间" />
+                            <Border Classes="select" Width="66">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Text="0" FontSize="12" Foreground="#E8E2F5" Opacity="0.4"
+                                               VerticalAlignment="Center" />
+                                    <Path Grid.Column="1" Data="M6,9 L12,15 L18,9" Stroke="#8B80A8"
+                                          StrokeThickness="2" StrokeLineCap="Round" Stretch="Uniform"
+                                          Width="9" Height="9" VerticalAlignment="Center" Opacity="0.4" />
+                                </Grid>
+                            </Border>
+                            <TextBlock Classes="unit" Text="小时" />
+                            <Border Classes="select" Width="66">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Text="0" FontSize="12" Foreground="#E8E2F5" Opacity="0.4"
+                                               VerticalAlignment="Center" />
+                                    <Path Grid.Column="1" Data="M6,9 L12,15 L18,9" Stroke="#8B80A8"
+                                          StrokeThickness="2" StrokeLineCap="Round" Stretch="Uniform"
+                                          Width="9" Height="9" VerticalAlignment="Center" Opacity="0.4" />
+                                </Grid>
+                            </Border>
+                            <TextBlock Classes="unit" Text="分钟" />
+                        </StackPanel>
+                        <TextBlock Classes="note" Text="关闭软件时自动退出（当前版本固定为此行为）" />
+
+                        <StackPanel Classes="row">
+                            <TextBlock Classes="grouptitle" Text="关闭主面板" Width="64" />
+                            <RadioButton Content="最小化到系统托盘" GroupName="closePanel" IsChecked="True" />
+                            <RadioButton Content="退出 Aster" GroupName="closePanel" />
+                        </StackPanel>
+
+                        <CheckBox Content="开启 SMTC（开启后播放信息同步到系统菜单栏及第三方软件）" />
+                    </StackPanel>
+                    <Border Grid.ColumnSpan="2" Height="1" Background="#0DFFFFFF" VerticalAlignment="Bottom"
+                            Margin="0,26,0,0" />
+                </Grid>
+
+                <!-- 播放 -->
+                <Grid Name="secPlay" ColumnDefinitions="104,*" Margin="0,26,0,0">
+                    <TextBlock Text="播放" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Top"
+                               Margin="0,3,0,0" />
+                    <StackPanel Grid.Column="1" Classes="col">
+                        <CheckBox Content="程序启动时自动播放" />
+                        <CheckBox Content="音乐播放时不自动休眠或锁屏" />
+                        <CheckBox Content="跨设备续播（登录后自动接着上一台设备的进度）" IsChecked="True" />
+                        <CheckBox Content="首次进入歌单页时自动播放（不播歌时）" />
+                        <CheckBox Content="程序启动时记住上一次播放进度" IsChecked="True" />
+                    </StackPanel>
+                    <Border Grid.ColumnSpan="2" Height="1" Background="#0DFFFFFF" VerticalAlignment="Bottom"
+                            Margin="0,26,0,0" />
+                </Grid>
+
+                <!-- 音质与下载 -->
+                <Grid Name="secQuality" ColumnDefinitions="104,*" Margin="0,26,0,0">
+                    <TextBlock Text="音质与下载" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Top"
+                               Margin="0,3,0,0" />
+                    <StackPanel Grid.Column="1" Classes="col">
+                        <StackPanel Classes="row">
+                            <TextBlock Classes="grouptitle" Text="音质选择" Width="64" />
+                            <RadioButton Content="标准" GroupName="q" />
+                            <RadioButton Content="较高" GroupName="q" />
+                            <RadioButton Content="无损" GroupName="q" IsChecked="True" />
+                        </StackPanel>
+                        <StackPanel Classes="row">
+                            <TextBlock Classes="grouptitle" Text="下载目录" Width="64" />
+                            <Border Background="#120B22" BorderBrush="#2A2046" BorderThickness="1"
+                                    CornerRadius="6" Padding="10,5">
+                                <TextBlock Text="~/Music/Aster" FontSize="12" Foreground="{StaticResource Text2}"
+                                           FontFamily="Menlo, Consolas, monospace" />
+                            </Border>
+                            <c:AsterButton Classes="setbtn" Content="选择" />
+                        </StackPanel>
+                        <StackPanel Classes="row">
+                            <TextBlock Classes="grouptitle" Text="同时下载" Width="64" />
+                            <Border Classes="select" Width="72">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Text="3" FontSize="12" Foreground="#E8E2F5"
+                                               VerticalAlignment="Center" />
+                                    <Path Grid.Column="1" Data="M6,9 L12,15 L18,9" Stroke="#8B80A8"
+                                          StrokeThickness="2" StrokeLineCap="Round" Stretch="Uniform"
+                                          Width="9" Height="9" VerticalAlignment="Center" />
+                                </Grid>
+                            </Border>
+                            <TextBlock Classes="unit" Text="首" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Border Grid.ColumnSpan="2" Height="1" Background="#0DFFFFFF" VerticalAlignment="Bottom"
+                            Margin="0,26,0,0" />
+                </Grid>
+
+                <!-- 桌面与歌词 -->
+                <Grid Name="secLyrics" ColumnDefinitions="104,*" Margin="0,26,0,0">
+                    <TextBlock Text="桌面与歌词" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Top"
+                               Margin="0,3,0,0" />
+                    <StackPanel Grid.Column="1" Classes="col">
+                        <CheckBox Content="开启桌面歌词" IsChecked="True" />
+                        <StackPanel Classes="row">
+                            <TextBlock Classes="grouptitle" Text="歌词字号" Width="64" />
+                            <Border Classes="select" Width="78">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Text="中" FontSize="12" Foreground="#E8E2F5"
+                                               VerticalAlignment="Center" />
+                                    <Path Grid.Column="1" Data="M6,9 L12,15 L18,9" Stroke="#8B80A8"
+                                          StrokeThickness="2" StrokeLineCap="Round" Stretch="Uniform"
+                                          Width="9" Height="9" VerticalAlignment="Center" />
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Classes="row">
+                            <TextBlock Classes="grouptitle" Text="歌词颜色" Width="64" />
+                            <Ellipse Width="18" Height="18" Fill="White" Stroke="#3DFFFFFF" />
+                            <Ellipse Width="18" Height="18" Fill="#C084FC" Stroke="#3DFFFFFF" />
+                            <Ellipse Width="18" Height="18" Fill="#FF4D6D" Stroke="#3DFFFFFF" />
+                            <Ellipse Width="18" Height="18" Fill="#A8A8C2" Stroke="#3DFFFFFF" />
+                        </StackPanel>
+                        <CheckBox Content="锁定歌词位置" />
+                    </StackPanel>
+                    <Border Grid.ColumnSpan="2" Height="1" Background="#0DFFFFFF" VerticalAlignment="Bottom"
+                            Margin="0,26,0,0" />
+                </Grid>
+
+                <!-- 快捷键 -->
+                <Grid Name="secShortcuts" ColumnDefinitions="104,*" Margin="0,26,0,0">
+                    <TextBlock Text="快捷键" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Top"
+                               Margin="0,3,0,0" />
+                    <StackPanel Grid.Column="1" Classes="col">
+                        <Grid ColumnDefinitions="150,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                              RowSpacing="10">
+                            <TextBlock Text="播放 / 暂停" FontSize="12" Foreground="#8B80A8"
+                                       VerticalAlignment="Center" />
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="6">
+                                <Border Classes="kbd"><TextBlock Text="Space" FontSize="11" Foreground="#C9BCE4" /></Border>
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="1" Text="上一首 / 下一首" FontSize="12" Foreground="#8B80A8"
+                                       VerticalAlignment="Center" />
+                            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Spacing="6">
+                                <Border Classes="kbd"><TextBlock Text="Ctrl" FontSize="11" Foreground="#C9BCE4" /></Border>
+                                <Border Classes="kbd"><TextBlock Text="←" FontSize="11" Foreground="#C9BCE4" /></Border>
+                                <Border Classes="kbd"><TextBlock Text="→" FontSize="11" Foreground="#C9BCE4" /></Border>
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="2" Text="音量增减" FontSize="12" Foreground="#8B80A8"
+                                       VerticalAlignment="Center" />
+                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Spacing="6">
+                                <Border Classes="kbd"><TextBlock Text="Ctrl" FontSize="11" Foreground="#C9BCE4" /></Border>
+                                <Border Classes="kbd"><TextBlock Text="↑" FontSize="11" Foreground="#C9BCE4" /></Border>
+                                <Border Classes="kbd"><TextBlock Text="↓" FontSize="11" Foreground="#C9BCE4" /></Border>
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="3" Text="搜索" FontSize="12" Foreground="#8B80A8"
+                                       VerticalAlignment="Center" />
+                            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Spacing="6">
+                                <Border Classes="kbd"><TextBlock Text="Ctrl" FontSize="11" Foreground="#C9BCE4" /></Border>
+                                <Border Classes="kbd"><TextBlock Text="K" FontSize="11" Foreground="#C9BCE4" /></Border>
+                            </StackPanel>
+
+                            <TextBlock Grid.Row="4" Text="喜欢当前歌曲" FontSize="12" Foreground="#8B80A8"
+                                       VerticalAlignment="Center" />
+                            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Spacing="6">
+                                <Border Classes="kbd"><TextBlock Text="Ctrl" FontSize="11" Foreground="#C9BCE4" /></Border>
+                                <Border Classes="kbd"><TextBlock Text="L" FontSize="11" Foreground="#C9BCE4" /></Border>
+                            </StackPanel>
+                        </Grid>
+                        <TextBlock Classes="note" Text="快捷键暂不支持自定义，后续版本开放。" />
+                    </StackPanel>
+                    <Border Grid.ColumnSpan="2" Height="1" Background="#0DFFFFFF" VerticalAlignment="Bottom"
+                            Margin="0,26,0,0" />
+                </Grid>
+
+                <!-- 关于 -->
+                <Grid Name="secAbout" ColumnDefinitions="104,*" Margin="0,26,0,0">
+                    <TextBlock Text="关于 Aster" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Top"
+                               Margin="0,3,0,0" />
+                    <StackPanel Grid.Column="1" Classes="col">
+                        <StackPanel Classes="row">
+                            <c:BrandMark Width="48" Height="48" />
+                            <StackPanel Margin="8,0,0,0" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal" Spacing="4">
+                                    <TextBlock Text="Aster" FontSize="13" FontWeight="SemiBold" />
+                                    <TextBlock Text="1.0.0" FontSize="11" Foreground="{StaticResource Text4}"
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                                <TextBlock Text="山茶 · 只属于你的音乐空间" FontSize="11"
+                                           Foreground="{StaticResource Text4}" Margin="0,4,0,0" />
+                            </StackPanel>
+                            <c:AsterButton Classes="setbtn" Content="检查更新" Margin="18,0,0,0" />
+                            <TextBlock Text="设计规范 →" FontSize="12" Foreground="{StaticResource Text4}"
+                                       VerticalAlignment="Center" Cursor="Hand" />
+                        </StackPanel>
+                        <TextBlock Classes="note" Text="© 2026 Aster Studio　·　UI 设计稿 v1.0　·　保留所有权利" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

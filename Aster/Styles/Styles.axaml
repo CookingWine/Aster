@@ -1,0 +1,203 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="using:Aster.Controls">
+
+    <!-- ============================================================
+         基础
+         ============================================================ -->
+    <Style Selector="Window">
+        <Setter Property="FontFamily" Value="Inter, PingFang SC, Helvetica Neue, Segoe UI" />
+        <Setter Property="Background" Value="{StaticResource Bg}" />
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <Style Selector="TextBlock">
+        <Setter Property="TextWrapping" Value="NoWrap" />
+    </Style>
+
+    <!-- ============================================================
+         按钮：AsterButton
+         ============================================================ -->
+    <Style Selector="c|AsterButton">
+        <Setter Property="Theme" Value="{StaticResource AsterButtonTheme}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <!-- 图标按钮 30×30 -->
+    <Style Selector="c|AsterButton.icon">
+        <Setter Property="Width" Value="30" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="CornerRadius" Value="15" />
+    </Style>
+    <Style Selector="c|AsterButton.icon:pointerover">
+        <Setter Property="Background" Value="#0DFFFFFF" />
+    </Style>
+    <Style Selector="c|AsterButton.icon:pressed">
+        <Setter Property="Background" Value="#16FFFFFF" />
+    </Style>
+    <Style Selector="c|AsterButton.icon.active">
+        <Setter Property="Background" Value="#12FFFFFF" />
+    </Style>
+    <Style Selector="c|AsterButton.liked">
+        <Setter Property="Foreground" Value="{StaticResource Rose}" />
+    </Style>
+
+    <!-- 主播放键 -->
+    <Style Selector="c|AsterButton.play">
+        <Setter Property="Width" Value="44" />
+        <Setter Property="Height" Value="44" />
+        <Setter Property="CornerRadius" Value="22" />
+        <Setter Property="Background" Value="{StaticResource Purple}" />
+    </Style>
+    <Style Selector="c|AsterButton.play:pointerover">
+        <Setter Property="Background" Value="{StaticResource PurpleHover}" />
+    </Style>
+    <Style Selector="c|AsterButton.play:pressed">
+        <Setter Property="Background" Value="#8B2BE0" />
+    </Style>
+
+    <!-- 胶囊按钮 -->
+    <Style Selector="c|AsterButton.pill">
+        <Setter Property="Height" Value="42" />
+        <Setter Property="Padding" Value="24,0" />
+        <Setter Property="CornerRadius" Value="21" />
+        <Setter Property="FontSize" Value="13" />
+    </Style>
+    <Style Selector="c|AsterButton.pill.sm">
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Padding" Value="20,0" />
+        <Setter Property="CornerRadius" Value="20" />
+    </Style>
+    <Style Selector="c|AsterButton.primary">
+        <Setter Property="Background" Value="{StaticResource Purple}" />
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
+    </Style>
+    <Style Selector="c|AsterButton.primary:pointerover">
+        <Setter Property="Background" Value="{StaticResource PurpleHover}" />
+    </Style>
+    <Style Selector="c|AsterButton.ghost">
+        <Setter Property="Background" Value="#150A28" />
+        <Setter Property="BorderBrush" Value="#4A3A70" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{StaticResource NavTextHover}" />
+    </Style>
+    <Style Selector="c|AsterButton.ghost:pointerover">
+        <Setter Property="Background" Value="#1D1033" />
+    </Style>
+
+    <!-- 侧边栏导航 -->
+    <Style Selector="c|AsterButton.nav">
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="FontSize" Value="13.5" />
+        <Setter Property="Foreground" Value="{StaticResource NavText}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+    </Style>
+    <Style Selector="c|AsterButton.nav:pointerover">
+        <Setter Property="Background" Value="#08FFFFFF" />
+        <Setter Property="Foreground" Value="{StaticResource NavTextHover}" />
+    </Style>
+    <Style Selector="c|AsterButton.nav.active">
+        <Setter Property="Background" Value="{StaticResource NavActiveBg}" />
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
+    </Style>
+
+    <!-- 歌单行 -->
+    <Style Selector="c|AsterButton.plink">
+        <Setter Property="Height" Value="38" />
+        <Setter Property="Padding" Value="8,0" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="FontSize" Value="12.5" />
+        <Setter Property="Foreground" Value="{StaticResource NavText}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+    </Style>
+    <Style Selector="c|AsterButton.plink:pointerover">
+        <Setter Property="Background" Value="#08FFFFFF" />
+        <Setter Property="Foreground" Value="#E8E2F5" />
+    </Style>
+    <Style Selector="c|AsterButton.plink.active">
+        <Setter Property="Background" Value="{StaticResource NavActiveBg}" />
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
+    </Style>
+
+    <!-- 小号描边按钮（设置页） -->
+    <Style Selector="c|AsterButton.setbtn">
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Padding" Value="14,0" />
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Background" Value="#05FFFFFF" />
+        <Setter Property="BorderBrush" Value="#3A2F55" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{StaticResource NavTextHover}" />
+    </Style>
+    <Style Selector="c|AsterButton.setbtn:pointerover">
+        <Setter Property="Background" Value="#0FFFFFFF" />
+        <Setter Property="BorderBrush" Value="#4E3C7A" />
+    </Style>
+
+    <!-- 下划线页签 -->
+    <Style Selector="c|AsterButton.tab">
+        <Setter Property="Padding" Value="0,0,0,11" />
+        <Setter Property="BorderThickness" Value="0,0,0,2" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Foreground" Value="{StaticResource Text3}" />
+    </Style>
+    <Style Selector="c|AsterButton.tab:pointerover">
+        <Setter Property="Foreground" Value="{StaticResource NavTextHover}" />
+    </Style>
+    <Style Selector="c|AsterButton.tab.active">
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Purple}" />
+    </Style>
+
+    <!-- 第三方登录圆钮 -->
+    <Style Selector="c|AsterButton.oauth">
+        <Setter Property="Width" Value="44" />
+        <Setter Property="Height" Value="44" />
+        <Setter Property="CornerRadius" Value="22" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="#2A2046" />
+        <Setter Property="FontSize" Value="11.5" />
+        <Setter Property="Foreground" Value="{StaticResource Text2}" />
+    </Style>
+    <Style Selector="c|AsterButton.oauth:pointerover">
+        <Setter Property="BorderBrush" Value="#4E3C7A" />
+        <Setter Property="Background" Value="#0AFFFFFF" />
+        <Setter Property="Foreground" Value="{StaticResource Text}" />
+    </Style>
+
+    <!-- ============================================================
+         输入框（沿用 Fluent 模板，只统一字体与颜色）
+         ============================================================ -->
+    <Style Selector="TextBox">
+        <Setter Property="FontFamily" Value="Inherit" />
+        <Setter Property="SelectionBrush" Value="#669333EA" />
+        <Setter Property="CaretBrush" Value="{StaticResource PurpleLight}" />
+    </Style>
+
+    <!-- ============================================================
+         滚动条（细、低调）
+         ============================================================ -->
+    <Style Selector="ScrollBar:vertical">
+        <Setter Property="Width" Value="8" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style Selector="ScrollBar:horizontal">
+        <Setter Property="Height" Value="8" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style Selector="ScrollBar /template/ Thumb">
+        <Setter Property="Background" Value="#221A38" />
+    </Style>
+
+</Styles>

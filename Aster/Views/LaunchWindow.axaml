@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="using:Aster.Controls"
+        x:Class="Aster.Views.LaunchWindow"
+        Width="760" Height="500"
+        WindowStartupLocation="CenterScreen"
+        WindowDecorations="None"
+        CanResize="False"
+        Background="Transparent"
+        TransparencyLevelHint="Transparent">
+
+    <Border Name="Root" CornerRadius="20" Background="{StaticResource Bg}"
+            BorderBrush="#1B1230" BorderThickness="1" ClipToBounds="True">
+        <Grid>
+            <!-- 紫色光晕 -->
+            <Border Width="900" Height="900" Background="{StaticResource AuraPurple}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Opacity="0.85" IsHitTestVisible="False" />
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <c:BrandMark Width="132" Height="132" HorizontalAlignment="Center" />
+                <TextBlock Text="Aster" FontSize="40" FontWeight="Bold" LetterSpacing="-1.6"
+                           HorizontalAlignment="Center" Margin="0,30,0,0" />
+                <TextBlock Text="山茶 · 只属于你的音乐空间" FontSize="13"
+                           Foreground="#8B80A8" LetterSpacing="0.8"
+                           HorizontalAlignment="Center" Margin="0,10,0,0" />
+
+                <Border Width="180" Height="2" CornerRadius="1" Background="#1E1535"
+                        Margin="0,46,0,0" ClipToBounds="True">
+                    <Border Name="BarFill" HorizontalAlignment="Left" Width="0"
+                            Background="{StaticResource Progress}" />
+                </Border>
+            </StackPanel>
+
+            <TextBlock Text="VERSION 1.0.0　·　CAMELLIA EDITION"
+                       FontSize="10.5" Foreground="{StaticResource TextFaint}" LetterSpacing="1.7"
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,32" />
+        </Grid>
+    </Border>
+</Window>

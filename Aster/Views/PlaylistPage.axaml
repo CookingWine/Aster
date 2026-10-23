@@ -1,0 +1,147 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="using:Aster.Controls"
+             xmlns:m="using:Aster.Models"
+             x:Class="Aster.Views.PlaylistPage">
+
+    <UserControl.Styles>
+        <Style Selector="TextBox.search">
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="Height" Value="34" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontSize" Value="12.5" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        <Style Selector="Grid.trow">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <Style Selector="Grid.trow:pointerover">
+            <Setter Property="Background" Value="#09FFFFFF" />
+        </Style>
+    </UserControl.Styles>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="40,22,40,36">
+
+            <!-- 搜索 / 账号 -->
+            <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Right">
+                <Border Width="310" Height="36" CornerRadius="18" Background="#120B22"
+                        BorderBrush="#241A3E" BorderThickness="1" Padding="14,0">
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                        <c:Icon Kind="Search" Width="14" Height="14" Tint="{StaticResource Text3}"
+                                VerticalAlignment="Center" />
+                        <TextBox Grid.Column="1" Classes="search" Margin="10,0,0,0"
+                                 PlaceholderText="搜索歌曲、艺人、歌单" />
+                        <Border Grid.Column="2" BorderBrush="#2A2046" BorderThickness="1"
+                                CornerRadius="5" Padding="5,1" VerticalAlignment="Center">
+                            <TextBlock Text="⌘K" FontSize="10.5" Foreground="{StaticResource TextDim}" />
+                        </Border>
+                    </Grid>
+                </Border>
+                <Border Width="30" Height="30" CornerRadius="15" Background="{StaticResource Avatar}"
+                        BorderBrush="#3A2C5E" BorderThickness="1" Cursor="Hand" />
+            </StackPanel>
+
+            <!-- ==================== 歌单头 ==================== -->
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="28" Margin="0,30,0,0">
+                <Border Width="168" Height="168" CornerRadius="16" ClipToBounds="True"
+                        BorderBrush="#4A3568" BorderThickness="1">
+                    <Grid>
+                        <Border Background="{StaticResource PkCoverBg}" />
+                        <Border Background="{StaticResource PkCoverGlow}" />
+                        <Border Width="64" Height="64" CornerRadius="32" BorderBrush="#3DFFFFFF"
+                                BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                </Border>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="PLAYLIST · 私人歌单" FontSize="10" FontWeight="SemiBold"
+                               LetterSpacing="2" Foreground="{StaticResource PurpleLight}" />
+                    <TextBlock Text="山茶与雨" FontSize="42" FontWeight="Bold" LetterSpacing="-1"
+                               Margin="0,8,0,12" />
+                    <TextBlock Text="下雨的傍晚适合把音量调低一点。紫色是雨，山茶是房间。"
+                               FontSize="13" Foreground="{StaticResource Text2}" MaxWidth="620"
+                               HorizontalAlignment="Left" TextAlignment="Left" TextWrapping="Wrap" />
+                    <TextBlock Text="24 首 · 1 小时 38 分 · 2026-10-18 更新" FontSize="11.5"
+                               Foreground="{StaticResource Text3}" Margin="0,12,0,20" />
+
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <c:AsterButton Classes="pill primary sm" Click="OnPlay">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <c:Icon Kind="Play" Width="14" Height="14" Tint="White" />
+                                <TextBlock Text="播放" />
+                            </StackPanel>
+                        </c:AsterButton>
+                        <c:AsterButton Classes="pill ghost sm">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <c:Icon Kind="Shuffle" Width="14" Height="14" Tint="#C9BCE4" />
+                                <TextBlock Text="随机播放" />
+                            </StackPanel>
+                        </c:AsterButton>
+                        <c:AsterButton Classes="icon" ToolTip.Tip="更多">
+                            <c:Icon Kind="More" Width="16" Height="16" Tint="#8B80A8" />
+                        </c:AsterButton>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <!-- ==================== 曲目表 ==================== -->
+            <Grid ColumnDefinitions="46,*,300,92" Height="34" Margin="0,34,0,0">
+                <TextBlock Text="#" FontSize="10.5" Foreground="{StaticResource Text4}"
+                           VerticalAlignment="Center" Margin="6,0,0,0" />
+                <TextBlock Grid.Column="1" Text="标题" FontSize="10.5" Foreground="{StaticResource Text4}"
+                           VerticalAlignment="Center" />
+                <TextBlock Grid.Column="2" Text="专辑" FontSize="10.5" Foreground="{StaticResource Text4}"
+                           VerticalAlignment="Center" />
+                <TextBlock Grid.Column="3" Text="时长" FontSize="10.5" Foreground="{StaticResource Text4}"
+                           VerticalAlignment="Center" />
+            </Grid>
+            <Border Height="1" Background="{StaticResource StrokeSoft}" />
+
+            <ItemsControl ItemsSource="{x:Static m:SampleData.PlaylistTracks}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Classes="trow" ColumnDefinitions="46,*,300,92" Height="56">
+                            <Panel Margin="8,0,0,0" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Number}" FontSize="11"
+                                           Foreground="{StaticResource Text4}"
+                                           IsVisible="{Binding !IsActive}" />
+                                <StackPanel Orientation="Horizontal" Spacing="2" Height="14"
+                                            VerticalAlignment="Center"
+                                            IsVisible="{Binding IsActive}">
+                                    <Border Width="3" Height="6" CornerRadius="2" VerticalAlignment="Bottom"
+                                            Background="{StaticResource PurpleLight}" />
+                                    <Border Width="3" Height="12" CornerRadius="2" VerticalAlignment="Bottom"
+                                            Background="{StaticResource PurpleLight}" />
+                                    <Border Width="3" Height="8" CornerRadius="2" VerticalAlignment="Bottom"
+                                            Background="{StaticResource PurpleLight}" />
+                                </StackPanel>
+                            </Panel>
+
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="14"
+                                        VerticalAlignment="Center">
+                                <Border Width="36" Height="36" CornerRadius="6" ClipToBounds="True">
+                                    <Panel>
+                                        <Border CornerRadius="6" Background="{Binding Art.Fill}" />
+                                        <Border CornerRadius="6" Background="{Binding Art.Glow}" />
+                                    </Panel>
+                                </Border>
+                                <TextBlock Text="{Binding Title}" FontSize="13" Foreground="#E8E2F5"
+                                           VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+                            </StackPanel>
+
+                            <TextBlock Grid.Column="2" Text="{Binding Album}" FontSize="12"
+                                       Foreground="{StaticResource Text3}" VerticalAlignment="Center"
+                                       TextTrimming="CharacterEllipsis" />
+                            <TextBlock Grid.Column="3" Text="{Binding Duration}" FontSize="11"
+                                       Foreground="{StaticResource Text4}" VerticalAlignment="Center"
+                                       Margin="4,0,0,0" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

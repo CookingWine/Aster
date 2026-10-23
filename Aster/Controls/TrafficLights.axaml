@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Aster.Controls.TrafficLights">
+    <UserControl.Styles>
+        <Style Selector="Border#lights Path">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <Style Selector="Border#lights:pointerover Path">
+            <Setter Property="Opacity" Value="0.85" />
+        </Style>
+        <Style Selector="Button.dot">
+            <Setter Property="Width" Value="12" />
+            <Setter Property="Height" Value="12" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+
+    <Border Name="lights" Background="Transparent">
+        <StackPanel Orientation="Horizontal" Spacing="9">
+            <!-- 绿：全屏 / 退出全屏 -->
+            <Button Name="MaxButton" Classes="dot" Background="#3FCF6E" Click="OnToggleFullScreen"
+                    ToolTip.Tip="全屏">
+                <Path Data="{StaticResource IcoExpandStroke}" Stroke="#0B2A16" StrokeThickness="2.4"
+                      StrokeLineCap="Round" Stretch="Uniform" Width="7" Height="7" />
+            </Button>
+            <!-- 黄：最小化 -->
+            <Button Name="MinButton" Classes="dot" Background="#F5B831" Click="OnMinimize"
+                    ToolTip.Tip="最小化">
+                <Canvas Width="8" Height="8">
+                    <Path Data="M2,4 L6,4" Stroke="#2A1D02" StrokeThickness="1.3" StrokeLineCap="Round" />
+                </Canvas>
+            </Button>
+            <!-- 红：关闭 -->
+            <Button Name="CloseButton" Classes="dot" Background="#F2504B" Click="OnClose"
+                    ToolTip.Tip="关闭">
+                <Canvas Width="8" Height="8">
+                    <Path Data="M2.2,2.2 L5.8,5.8 M5.8,2.2 L2.2,5.8" Stroke="#310604" StrokeThickness="1.15"
+                          StrokeLineCap="Round" />
+                </Canvas>
+            </Button>
+        </StackPanel>
+    </Border>
+</UserControl>

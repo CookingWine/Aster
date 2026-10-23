@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Aster.Controls.BrandMark"
+             Width="22" Height="22">
+    <!-- 山茶花标：几何数据来自 Design/sprite.js 的 app-icon，已合并旋转后的五个花瓣 -->
+    <Viewbox Stretch="Uniform">
+        <Canvas Width="512" Height="512">
+            <Border Width="512" Height="512" CornerRadius="116" Background="{StaticResource BrandBg}" />
+            <Path Data="{StaticResource CamelliaOuter}" Fill="{StaticResource PetalOuter}" />
+            <Path Data="{StaticResource CamelliaInner}" Fill="{StaticResource PetalInner}" />
+            <Ellipse Canvas.Left="238" Canvas.Top="238" Width="36" Height="36" Fill="#8C340C22" />
+            <Ellipse Canvas.Left="251" Canvas.Top="251" Width="10" Height="10" Fill="#FFCF7E" />
+        </Canvas>
+    </Viewbox>
+</UserControl>

@@ -1,0 +1,158 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="using:Aster.Controls"
+             xmlns:m="using:Aster.Models"
+             x:Class="Aster.Views.DiscoverPage">
+
+    <UserControl.Styles>
+        <Style Selector="Border.fab">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <Style Selector="c|AsterButton.card:pointerover Border.fab">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+        <Style Selector="c|AsterButton.card:pointerover Border.cover">
+            <Setter Property="BorderBrush" Value="#6B4A8F" />
+        </Style>
+        <Style Selector="TextBox.search">
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="Height" Value="34" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontSize" Value="12.5" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+    </UserControl.Styles>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="40,26,40,36">
+
+            <!-- ==================== 页面头 ==================== -->
+            <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,26">
+                <StackPanel>
+                    <TextBlock Text="晚上好" FontSize="12.5" Foreground="#8B80A8" LetterSpacing="0.3" />
+                    <TextBlock Text="今晚想听点什么" FontSize="29" FontWeight="Bold"
+                               LetterSpacing="-0.3" Margin="0,6,0,0" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="20"
+                            VerticalAlignment="Top" Margin="0,2,0,0">
+                    <Border Width="310" Height="36" CornerRadius="18" Background="#120B22"
+                            BorderBrush="#241A3E" BorderThickness="1" Padding="14,0">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <c:Icon Kind="Search" Width="14" Height="14" Tint="{StaticResource Text3}"
+                                    VerticalAlignment="Center" />
+                            <TextBox Grid.Column="1" Classes="search" Margin="10,0,0,0"
+                                     PlaceholderText="搜索歌曲、艺人、歌单" />
+                            <Border Grid.Column="2" BorderBrush="#2A2046" BorderThickness="1"
+                                    CornerRadius="5" Padding="5,1" VerticalAlignment="Center">
+                                <TextBlock Text="⌘K" FontSize="10.5" Foreground="{StaticResource TextDim}" />
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Border Width="30" Height="30" CornerRadius="15" Background="{StaticResource Avatar}"
+                            BorderBrush="#3A2C5E" BorderThickness="1"
+                            ToolTip.Tip="账号" Cursor="Hand" />
+                </StackPanel>
+            </Grid>
+
+            <!-- ==================== 精选横幅 ==================== -->
+            <Border Height="250" CornerRadius="20" ClipToBounds="True"
+                    BorderBrush="#3A2760" BorderThickness="1">
+                <Grid>
+                    <Border Background="{StaticResource HeroBg}" />
+                    <Border Background="{StaticResource HeroGlow}" />
+
+                    <Grid Margin="32,0" ColumnDefinitions="*,Auto">
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="本周精选 · WEEKLY PICK" FontSize="10.5" FontWeight="SemiBold"
+                                       LetterSpacing="2.1" Foreground="#D8B4FE" />
+                            <TextBlock Text="山茶夜语" FontSize="40" FontWeight="Bold" LetterSpacing="-0.8"
+                                       Margin="0,6,0,14" />
+                            <TextBlock FontSize="13" Foreground="#B9AECF" LineHeight="21.5"
+                                       MaxWidth="400" TextWrapping="Wrap"
+                                       HorizontalAlignment="Left" TextAlignment="Left"
+                                       Text="十首为深夜准备的紫色调，&#10;从一朵山茶落下的声音开始。" />
+
+                            <StackPanel Orientation="Horizontal" Spacing="12" Margin="0,22,0,0">
+                                <c:AsterButton Classes="pill primary" Click="OnPlayPlaylist">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <c:Icon Kind="Play" Width="14" Height="14" Tint="White" />
+                                        <TextBlock Text="播放歌单" />
+                                    </StackPanel>
+                                </c:AsterButton>
+                                <c:AsterButton Classes="pill ghost">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <c:Icon Kind="Heart" Width="14" Height="14" Tint="#C9BCE4" Weight="1.8" />
+                                        <TextBlock Text="收藏" />
+                                    </StackPanel>
+                                </c:AsterButton>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Border Grid.Column="1" Width="192" Height="192" CornerRadius="16" ClipToBounds="True"
+                                BorderBrush="#5A3A78" BorderThickness="1" VerticalAlignment="Center">
+                            <Grid>
+                                <Border Background="{StaticResource HeroArtBg}" />
+                                <Border Background="{StaticResource HeroArtGlow}" />
+                                <Border Width="61" Height="61" CornerRadius="31" BorderBrush="#47FFFFFF"
+                                        BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- ==================== 最近播放 ==================== -->
+            <Grid Margin="0,34,0,20" ColumnDefinitions="*,Auto">
+                <TextBlock Text="最近播放" FontSize="17" FontWeight="SemiBold" LetterSpacing="-0.2" />
+                <TextBlock Grid.Column="1" Text="全部" FontSize="12" Foreground="{StaticResource NavIcon}"
+                           VerticalAlignment="Bottom" Cursor="Hand" />
+            </Grid>
+
+            <ItemsControl Margin="-10,0" ItemsSource="{x:Static m:SampleData.RecentCards}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="5" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <c:AsterButton Classes="card" Margin="10,0" Padding="0"
+                                       HorizontalContentAlignment="Stretch"
+                                       VerticalContentAlignment="Top"
+                                       Click="OnOpenPlaylist">
+                            <StackPanel>
+                                <Viewbox Stretch="Uniform">
+                                    <Grid Width="169" Height="169">
+                                        <Border Classes="cover" CornerRadius="14" ClipToBounds="True"
+                                                BorderBrush="#2A1F44" BorderThickness="1">
+                                            <Panel>
+                                                <Border CornerRadius="14" Background="{Binding Art.Fill}" />
+                                                <Border CornerRadius="14" Background="{Binding Art.Glow}" />
+                                            </Panel>
+                                        </Border>
+                                        <Border Classes="fab" Width="38" Height="38" CornerRadius="19"
+                                                Background="{StaticResource Purple}"
+                                                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                                Margin="0,0,12,12" IsHitTestVisible="False">
+                                            <c:Icon Kind="Play" Width="14" Height="14" Tint="White"
+                                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                    </Grid>
+                                </Viewbox>
+                                <TextBlock Text="{Binding Title}" FontSize="13" FontWeight="Medium"
+                                           Margin="0,12,0,4" />
+                                <TextBlock Text="{Binding Meta}" FontSize="11.5"
+                                           Foreground="{StaticResource Text3}" TextTrimming="CharacterEllipsis" />
+                            </StackPanel>
+                        </c:AsterButton>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

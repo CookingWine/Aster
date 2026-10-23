@@ -2,6 +2,7 @@
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Aster.Runtime.Configuration;
+using Aster.Views;
 
 namespace Aster;
 
@@ -23,7 +24,8 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow();
+            // 启动顺序：启动画面 → 登录 → 主窗口
+            desktop.MainWindow = new LaunchWindow();
         }
 
         base.OnFrameworkInitializationCompleted();

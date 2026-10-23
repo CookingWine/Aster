@@ -1,0 +1,257 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="using:Aster.Controls"
+        xmlns:m="using:Aster.Models"
+        x:Class="Aster.Views.MainWindow"
+        Title="Aster"
+        Width="1240" Height="840"
+        MinWidth="1040" MinHeight="660"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource Bg}"
+        WindowDecorations="BorderOnly">
+
+    <Window.Styles>
+        <!-- 侧边栏图标着色随导航状态变化 -->
+        <Style Selector="c|Icon.navicon">
+            <Setter Property="Tint" Value="{StaticResource NavIcon}" />
+        </Style>
+        <Style Selector="c|AsterButton.nav:pointerover c|Icon.navicon">
+            <Setter Property="Tint" Value="#9A90B4" />
+        </Style>
+        <Style Selector="c|AsterButton.nav.active c|Icon.navicon">
+            <Setter Property="Tint" Value="{StaticResource PurpleLight}" />
+        </Style>
+
+        <!-- 歌单缩略块 -->
+        <Style Selector="Border.thumb">
+            <Setter Property="Width" Value="22" />
+            <Setter Property="Height" Value="22" />
+            <Setter Property="CornerRadius" Value="6" />
+        </Style>
+
+        <!-- 搜索框 -->
+        <Style Selector="TextBox.search">
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="Height" Value="34" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="FontSize" Value="12.5" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+    </Window.Styles>
+
+    <Panel>
+        <Grid RowDefinitions="52,*,88" ClipToBounds="True">
+
+            <!-- ==================== 顶栏 ==================== -->
+            <Grid Name="TitleBar" Grid.Row="0" Margin="24,0" ColumnDefinitions="*,Auto">
+                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                    <c:BrandMark Width="22" Height="22" />
+                    <TextBlock Text="Aster" FontSize="15" FontWeight="SemiBold" LetterSpacing="-0.3"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+                <c:TrafficLights Grid.Column="1" VerticalAlignment="Center" />
+            </Grid>
+
+            <!-- ==================== 主体 ==================== -->
+            <Grid Grid.Row="1" ColumnDefinitions="236,*">
+
+                <!-- 侧边栏 -->
+                <Border Background="{StaticResource Panel}"
+                        BorderBrush="{StaticResource StrokeSoft}" BorderThickness="0,0,1,0">
+                    <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" Margin="0,12,0,10">
+
+                        <StackPanel Margin="16,0" Spacing="2">
+                            <c:AsterButton Name="NavDiscover" Classes="nav active" Click="OnNavDiscover">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <c:Icon Classes="navicon" Kind="Home" Width="16" Height="16" />
+                                    <TextBlock Text="发现" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </c:AsterButton>
+                            <c:AsterButton Name="NavLibrary" Classes="nav" Click="OnNavLibrary">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <c:Icon Classes="navicon" Kind="Library" Width="16" Height="16" />
+                                    <TextBlock Text="音乐库" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </c:AsterButton>
+                            <c:AsterButton Name="NavFavorites" Classes="nav" Click="OnNavLibrary">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <c:Icon Classes="navicon" Kind="Heart" Width="16" Height="16" />
+                                    <TextBlock Text="收藏" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </c:AsterButton>
+                            <c:AsterButton Name="NavRecent" Classes="nav" Click="OnNavLibrary">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <c:Icon Classes="navicon" Kind="Clock" Width="16" Height="16" />
+                                    <TextBlock Text="最近播放" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </c:AsterButton>
+                        </StackPanel>
+
+                        <Border Grid.Row="1" Height="1" Background="{StaticResource StrokeSoft}" Margin="20,14" />
+
+                        <Grid Grid.Row="2" Margin="20,0,20,10" ColumnDefinitions="*,Auto">
+                            <TextBlock Text="我的歌单" FontSize="10" FontWeight="Medium"
+                                       LetterSpacing="1.4" Foreground="{StaticResource NavIcon}"
+                                       VerticalAlignment="Center" />
+                            <c:AsterButton Grid.Column="1" Classes="icon" Width="18" Height="18"
+                                           CornerRadius="9" ToolTip.Tip="新建歌单">
+                                <c:Icon Kind="Plus" Width="14" Height="14" Tint="{StaticResource Text4}" />
+                            </c:AsterButton>
+                        </Grid>
+
+                        <ItemsControl Grid.Row="3" Margin="20,0" ItemsSource="{x:Static m:SampleData.Playlists}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <c:AsterButton Classes="plink" Classes.active="{Binding IsCurrent}"
+                                                   Click="OnNavLibrary">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <Border Classes="thumb" Background="{Binding Fill}" />
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </c:AsterButton>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <StackPanel Grid.Row="4" Margin="16,8,16,0">
+                            <c:AsterButton Classes="nav" Click="OnOpenSettings" Height="40" FontSize="13">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <c:Icon Kind="Settings" Width="16" Height="16" Tint="{StaticResource NavIcon}" />
+                                    <TextBlock Text="设置" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </c:AsterButton>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- 内容区 -->
+                <Grid Grid.Column="1" ClipToBounds="True">
+                    <Border Width="900" Height="760" Background="{StaticResource AuraPurple}"
+                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-160,-280,0,0"
+                            Opacity="0.75" IsHitTestVisible="False" />
+                    <ContentControl Name="PageHost" />
+                </Grid>
+            </Grid>
+
+            <!-- ==================== 播放条 ==================== -->
+            <Border Grid.Row="2" Background="{StaticResource Card}"
+                    BorderBrush="#1C1436" BorderThickness="0,1,0,0">
+                <Grid>
+                    <Border Height="2" VerticalAlignment="Top" Background="#221637">
+                        <Grid ColumnDefinitions="43*,57*">
+                            <Border Background="{StaticResource Progress}" />
+                        </Grid>
+                    </Border>
+
+                    <Grid Margin="24,0" ColumnDefinitions="*,Auto,*">
+                        <!-- 左：当前曲目 -->
+                        <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+                            <c:AsterButton Width="56" Height="56" CornerRadius="8" Click="OnOpenNowPlaying"
+                                           ToolTip.Tip="打开正在播放">
+                                <Grid Width="56" Height="56">
+                                    <Border CornerRadius="8" Background="{StaticResource BarCoverBg}" />
+                                    <Border CornerRadius="8" Background="{StaticResource BarCoverGlow}" />
+                                </Grid>
+                            </c:AsterButton>
+
+                            <StackPanel VerticalAlignment="Center" Width="150">
+                                <TextBlock Text="山茶夜语" FontSize="13" FontWeight="Medium"
+                                           TextTrimming="CharacterEllipsis" />
+                                <TextBlock Text="Aster Studio" FontSize="11" Margin="0,3,0,0"
+                                           Foreground="{StaticResource Text3}" TextTrimming="CharacterEllipsis" />
+                            </StackPanel>
+
+                            <c:AsterButton Classes="icon liked" Width="30" Height="30" CornerRadius="15"
+                                           Click="OnToggleLike">
+                                <c:Icon Kind="Heart" Width="16" Height="16" Tint="{StaticResource Rose}"
+                                        Weight="1.9" />
+                            </c:AsterButton>
+                        </StackPanel>
+
+                        <!-- 中：传输控制 -->
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="26"
+                                    VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <c:AsterButton Classes="icon" ToolTip.Tip="随机播放">
+                                <c:Icon Kind="Shuffle" Width="17" Height="17" Tint="#8B80A8" />
+                            </c:AsterButton>
+                            <c:AsterButton Classes="icon" ToolTip.Tip="上一首">
+                                <c:Icon Kind="Prev" Width="17" Height="17" Tint="#8B80A8" />
+                            </c:AsterButton>
+
+                            <c:AsterButton Name="PlayToggle" Classes="play" Click="OnTogglePlay">
+                                <Panel>
+                                    <c:Icon Name="PlayIcon" Kind="Play" Width="16" Height="16" Tint="White" />
+                                    <c:Icon Name="PauseIcon" Kind="Pause" Width="16" Height="16" Tint="White"
+                                            IsVisible="False" />
+                                </Panel>
+                            </c:AsterButton>
+
+                            <c:AsterButton Classes="icon" ToolTip.Tip="下一首" Click="OnNext">
+                                <c:Icon Kind="Next" Width="17" Height="17" Tint="#8B80A8" />
+                            </c:AsterButton>
+                            <c:AsterButton Classes="icon" ToolTip.Tip="循环">
+                                <c:Icon Kind="Repeat" Width="17" Height="17" Tint="#8B80A8" />
+                            </c:AsterButton>
+                        </StackPanel>
+
+                        <!-- 右：音量与队列 -->
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="14"
+                                    VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                <c:Icon Kind="Volume" Width="16" Height="16" Tint="#8B80A8" />
+                                <Border Width="70" Height="3" CornerRadius="2" Background="#241A3E">
+                                    <Grid ColumnDefinitions="62*,38*">
+                                        <Border Background="{StaticResource PurpleLight}" CornerRadius="2" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                            <c:AsterButton Name="QueueToggle" Classes="icon" Click="OnToggleQueue"
+                                           ToolTip.Tip="播放队列">
+                                <c:Icon Kind="Queue" Width="16" Height="16" Tint="#8B80A8" />
+                            </c:AsterButton>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- ==================== 播放队列浮层 ==================== -->
+        <Border Name="QueuePopup" IsVisible="False" Width="340"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,24,96"
+                CornerRadius="14" Background="{StaticResource Card2}"
+                BorderBrush="{StaticResource StrokeStrong}" BorderThickness="1"
+                BoxShadow="0 30 70 -30 #000000">
+            <StackPanel Margin="12,6,12,10">
+                <Grid ColumnDefinitions="*,Auto" Margin="2,10,2,10">
+                    <TextBlock Text="播放队列" FontSize="12" Foreground="#8B80A8" VerticalAlignment="Center" />
+                    <TextBlock Grid.Column="1" Text="清空" FontSize="11"
+                               Foreground="{StaticResource Text4}" VerticalAlignment="Center" />
+                </Grid>
+                <Border Height="1" Background="#0DFFFFFF" Margin="0,0,0,6" />
+                <ItemsControl ItemsSource="{x:Static m:SampleData.UpNext}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="38,*,Auto" Margin="0,4">
+                                <Border Width="38" Height="38" CornerRadius="8">
+                                    <Panel>
+                                        <Border CornerRadius="8" Background="{Binding Art.Fill}" />
+                                        <Border CornerRadius="8" Background="{Binding Art.Glow}" />
+                                    </Panel>
+                                </Border>
+                                <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Title}" FontSize="13" />
+                                    <TextBlock Text="{Binding Artist}" FontSize="10.5" Margin="0,2,0,0"
+                                               Foreground="{StaticResource Text4}" />
+                                </StackPanel>
+                                <TextBlock Grid.Column="2" Text="{Binding Duration}" FontSize="11"
+                                           Foreground="{StaticResource Text4}" VerticalAlignment="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
+    </Panel>
+</Window>
