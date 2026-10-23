@@ -1,7 +1,9 @@
-
-Design/.workbuddy/memory/2026-10-22.md
-Design/preview
+# ---- IDE / 本地工作区 ----
+.idea/
+.workbuddy/
 .vs
-Aster/bin/Debug/net10.0
-Aster/obj
-Aster/.workbuddy/memory
+Design/preview
+
+# ---- 构建产物 ----
+Aster/bin/
+Aster/obj/
