@@ -41,9 +41,13 @@ namespace Aster.Runtime
             var app = AppBuilder.Configure<App>();
 
             app.UsePlatformDetect()
-                .WithDeveloperTools()
                 .WithInterFont()
                 .LogToTrace();
+
+            // DiagnosticsSupport 只在 Debug 配置里引用（见 Aster.csproj），Release 下不能调用
+#if DEBUG
+            app.WithDeveloperTools();
+#endif
 
             return app;
         }

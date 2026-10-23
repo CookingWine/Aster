@@ -7,3 +7,4 @@ Design/preview
 # ---- 构建产物 ----
 Aster/bin/
 Aster/obj/
+artifacts/

@@ -18,6 +18,29 @@ dotnet run --project Aster/Aster.csproj
 
 > 需要在有图形会话的终端里运行（SSH / 无 WindowServer 权限的环境会报 `RenderTimer` 错误）。
 
+macOS 上想要 Dock / Finder 里显示应用图标，需要打成 .app：
+
+```bash
+./scripts/bundle-macos.sh          # 产物：artifacts/Aster.app
+```
+
+`dotnet run` 直接跑时进程没有 bundle，Dock 只能显示 dotnet 的默认图标。
+
+## 应用图标
+
+<img src="docs/screenshots/icon.png" width="120" alt="Aster 应用图标">
+
+图标就是设计稿里的山茶花（`Design/sprite.js` 的 `app-icon`），由 `BrandMark` 控件渲染成 1024 的 PNG，再派生出各平台格式：
+
+| 文件 | 用途 |
+| --- | --- |
+| `Aster/Assets/aster-1024.png` | 源图，改图标后从这里重新导出 |
+| `Aster/Assets/aster-256.png` | 运行时 `Window.Icon`（Avalonia 不解码 .ico，统一用 PNG） |
+| `Aster/Assets/aster.ico` | Windows 可执行文件图标（16/32/48/64/128/256 六种尺寸） |
+| `Aster/Assets/aster.icns` | macOS 应用包图标（`CFBundleIconFile`） |
+
+`Aster.csproj` 里通过 `<ApplicationIcon>Assets/aster.ico</ApplicationIcon>` 嵌入到 exe，五个窗口各自用 `Icon="/Assets/aster-256.png"` 设置窗口图标。
+
 ## 目录
 
 ```
@@ -44,7 +67,10 @@ Aster/
 │   ├── SettingsWindow          设置
 │   └── Navigation.cs           窗口间切换
 ├── Models/SampleData.cs        示例数据与封面渐变
+├── Assets/                     应用图标（png / ico / icns）
 └── Runtime/                    启动与配置（原有）
+
+scripts/bundle-macos.sh         打包 macOS .app
 ```
 
 ## 设计稿对照

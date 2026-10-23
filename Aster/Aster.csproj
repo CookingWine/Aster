@@ -5,7 +5,14 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Windows 可执行文件的图标；macOS 打包用 Assets/aster.icns -->
+    <ApplicationIcon>Assets/aster.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 运行时只用 256 的 PNG（Window.Icon）；aster.ico / aster.icns 由系统与打包脚本使用 -->
+    <AvaloniaResource Include="Assets/aster-256.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">

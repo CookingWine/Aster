@@ -3,6 +3,7 @@
         xmlns:c="using:Aster.Controls"
         xmlns:m="using:Aster.Models"
         x:Class="Aster.Views.MainWindow"
+        Icon="/Assets/aster-256.png"
         Title="Aster"
         Width="1240" Height="840"
         MinWidth="1040" MinHeight="660"
