@@ -404,6 +404,41 @@
     });
   }
 
+  /* ---------- 侧边栏：主功能分组折叠 ---------- */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.side-group'));
+  if (groups.length) {
+    var NAV_KEY = 'aster.nav';
+    var navState = {};
+    try { navState = JSON.parse(localStorage.getItem(NAV_KEY)) || {}; } catch (e) { navState = {}; }
+
+    groups.forEach(function (group) {
+      var key = group.getAttribute('data-group');
+      var head = group.querySelector('.side-main');
+      var sub = group.querySelector('.subnav');
+      if (!head || !sub) return;
+
+      // 当前页所在的分组：高亮主功能，并强制展开，避免折叠状态把当前页藏起来
+      var hasActive = !!sub.querySelector('a.active');
+      group.classList.toggle('current', hasActive);
+
+      var open = hasActive ? true : navState[key] !== false;
+
+      var apply = function () {
+        head.classList.toggle('open', open);
+        sub.hidden = !open;
+      };
+
+      apply();
+
+      head.addEventListener('click', function () {
+        open = !open;
+        apply();
+        navState[key] = open;
+        try { localStorage.setItem(NAV_KEY, JSON.stringify(navState)); } catch (e) { /* 忽略 */ }
+      });
+    });
+  }
+
   /* ---------- 启动 ---------- */
   load();
   renderAll();
