@@ -38,49 +38,34 @@
     <!-- ===================== 侧边栏 ===================== -->
     <aside class="sidebar">
 
-      <div class="side-group" data-group="music">
-        <button class="side-main open" type="button">
-          <svg class="icon"><use href="#i-library"/></svg>
-          <span>音乐</span>
-          <svg class="icon side-caret"><use href="#i-back"/></svg>
+      <nav class="rail">
+        <button class="rail-item on" type="button" data-section="music">
+          <svg class="icon"><use href="#i-library"/></svg><span>音乐</span>
         </button>
-        <nav class="subnav">
-          <a href="index.html" class="active">发现</a>
-          <a href="playlist.html">音乐库</a>
-          <a href="playlist.html">收藏</a>
-          <a href="playlist.html">最近播放</a>
-        </nav>
+        <button class="rail-item" type="button" data-section="notes">
+          <svg class="icon"><use href="#i-note"/></svg><span>记事本</span>
+        </button>
+        <a class="rail-item rail-bottom" href="settings.html">
+          <svg class="icon"><use href="#i-settings"/></svg><span>设置</span>
+        </a>
+      </nav>
+
+      <div class="subpanel" data-section="music">
+        <a href="index.html">发现</a>
+        <a href="playlist.html">音乐库</a>
+        <a href="playlist.html">收藏</a>
+        <a href="playlist.html">最近播放</a>
+        <div class="sub-label">我的歌单</div>
+        <a href="playlist.html"><span class="pl-thumb" style="background:linear-gradient(135deg,#3A1A6B,#8B2D6B)"></span>深夜紫调</a>
+        <a href="playlist.html"><span class="pl-thumb" style="background:linear-gradient(135deg,#241046,#C33C71)"></span>山茶与雨</a>
+        <a href="playlist.html"><span class="pl-thumb" style="background:linear-gradient(135deg,#141033,#4B2A8F)"></span>只放给凌晨</a>
+        <a href="playlist.html"><span class="pl-thumb" style="background:linear-gradient(135deg,#2B0E2A,#E0617F)"></span>Lo-Fi 房间</a>
       </div>
 
-      <div class="side-group" data-group="playlists">
-        <button class="side-main open" type="button">
-          <svg class="icon"><use href="#i-heart"/></svg>
-          <span>我的歌单</span>
-          <svg class="icon side-caret"><use href="#i-back"/></svg>
-        </button>
-        <nav class="subnav">
-          <a href="playlist.html"><span class="pl-thumb" style="background:linear-gradient(135deg,#3A1A6B,#8B2D6B)"></span>深夜紫调</a>
-          <a href="playlist.html"><span class="pl-thumb" style="background:linear-gradient(135deg,#241046,#C33C71)"></span>山茶与雨</a>
-          <a href="playlist.html"><span class="pl-thumb" style="background:linear-gradient(135deg,#141033,#4B2A8F)"></span>只放给凌晨</a>
-          <a href="playlist.html"><span class="pl-thumb" style="background:linear-gradient(135deg,#2B0E2A,#E0617F)"></span>Lo-Fi 房间</a>
-        </nav>
-      </div>
-
-      <div class="side-group" data-group="tools">
-        <button class="side-main open" type="button">
-          <svg class="icon"><use href="#i-sparkle"/></svg>
-          <span>小工具</span>
-          <svg class="icon side-caret"><use href="#i-back"/></svg>
-        </button>
-        <nav class="subnav">
-          <a href="notes.html">记事本</a>
-          <a href="todos.html">待办清单</a>
-          <a href="focus.html">专注</a>
-        </nav>
-      </div>
-
-      <div class="side-bottom">
-        <a href="settings.html"><svg class="icon"><use href="#i-settings"/></svg>设置</a>
+      <div class="subpanel" data-section="notes" hidden>
+        <a href="notes.html">笔记</a>
+        <a href="todos.html">待办清单</a>
+        <a href="focus.html">专注</a>
       </div>
     </aside>
 

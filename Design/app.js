@@ -404,39 +404,41 @@
     });
   }
 
-  /* ---------- 侧边栏：主功能分组折叠 ---------- */
-  var groups = Array.prototype.slice.call(document.querySelectorAll('.side-group'));
-  if (groups.length) {
-    var NAV_KEY = 'aster.nav';
-    var navState = {};
-    try { navState = JSON.parse(localStorage.getItem(NAV_KEY)) || {}; } catch (e) { navState = {}; }
+  /* ---------- 侧边栏：一级菜单切换右侧二级菜单 ---------- */
+  var railItems = Array.prototype.slice.call(document.querySelectorAll('.rail-item[data-section]'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.subpanel[data-section]'));
 
-    groups.forEach(function (group) {
-      var key = group.getAttribute('data-group');
-      var head = group.querySelector('.side-main');
-      var sub = group.querySelector('.subnav');
-      if (!head || !sub) return;
+  if (railItems.length && panels.length) {
+    var section = (panels.filter(function (p) { return !p.hidden; })[0] || panels[0])
+      .getAttribute('data-section');
 
-      // 当前页所在的分组：高亮主功能，并强制展开，避免折叠状态把当前页藏起来
-      var hasActive = !!sub.querySelector('a.active');
-      group.classList.toggle('current', hasActive);
+    var showSection = function (next) {
+      section = next;
 
-      var open = hasActive ? true : navState[key] !== false;
+      railItems.forEach(function (item) {
+        item.classList.toggle('on', item.getAttribute('data-section') === next);
+      });
 
-      var apply = function () {
-        head.classList.toggle('open', open);
-        sub.hidden = !open;
-      };
+      panels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute('data-section') !== next;
+      });
+    };
 
-      apply();
+    railItems.forEach(function (item) {
+      item.addEventListener('click', function () {
+        var next = item.getAttribute('data-section');
 
-      head.addEventListener('click', function () {
-        open = !open;
-        apply();
-        navState[key] = open;
-        try { localStorage.setItem(NAV_KEY, JSON.stringify(navState)); } catch (e) { /* 忽略 */ }
+        // 已在当前分组：再点一次进入该分组的默认页
+        if (next === section) {
+          location.href = next === 'music' ? 'index.html' : 'notes.html';
+          return;
+        }
+
+        showSection(next);
       });
     });
+
+    showSection(section);
   }
 
   /* ---------- 启动 ---------- */
